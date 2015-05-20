@@ -16,7 +16,7 @@
     transform: scale(0.75, 0.75);
 }
 
-.swarm {
+.slice {
     position: relative;
     width: 450px;
     margin: auto;

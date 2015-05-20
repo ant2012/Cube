@@ -234,7 +234,7 @@ function toDegree (angle) {
 //Init section
 $(function(){
     var faces = new Faces();
-    var iceCube = new CubeInstance($('.viewport .swarm')[0], $('.viewport .infoBox')[0], faces);
+    var iceCube = new CubeInstance($('.viewport .slice')[0], $('.viewport .infoBox')[0], faces);
 
     $('.viewport').on('mousedown', function(evt) {
         iceCube.mouseDown(evt);
