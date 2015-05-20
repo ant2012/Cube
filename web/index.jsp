@@ -14,6 +14,8 @@
   <title>The Cube Demo</title>
 </head>
 <body>
-<a href="cube.jsp">Go Cube</a>
+<a href="cube.html">Go Cube</a><br/>
+<a href="swarm.html">Go Swarm</a><br/>
+<img src="img/splash.png">
 </body>
 </html>
