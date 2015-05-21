@@ -13,16 +13,60 @@ function CubeInstance(viewport){
     this.autoRotateToNearestFace = true;
 
     this.init = function(){
-        //Construct and transit slices
+
         var slicesContainer = $(this.domObject).find('.slices')[0];
         var slicesArray = $(slicesContainer).find('.slice');
+
+        //Cube size
+        var cubeMaximumSize = 400;
+        var zCount = slicesArray.length;
+        var firstSliceLines = $(slicesArray[0]).find('.line');
+        var xCount = firstSliceLines.length;
+        var firstLineCubes = $(firstSliceLines[0]).find('.cube');
+        var yCount = firstLineCubes.length;
+
+        var maxDimCount = Math.max(xCount, yCount, zCount);
+        var cubeSize = cubeMaximumSize/maxDimCount;
+        var marginUnit = 0.1*cubeSize;
+
+        $('.slices').css("width", (xCount*(cubeSize + marginUnit)+10) + "px");
+        $('.line').css("margin", "0 "+marginUnit/2+"px 0");
+        $('.cube')
+            .css("margin", "0px 0px "+marginUnit+"px")
+            .css("height", cubeSize+"px")
+            .css("width", cubeSize+"px");
+        $('.cube div')
+            .css("height", 0.8*cubeSize+"px")
+            .css("width", 0.8*cubeSize+"px")
+            .css("padding", marginUnit+"px");
+        var translateZ = " translateZ("+cubeSize/2+"px)";
+
+        var starterTransform = $('.front').css("transform");
+        $('.front').css("transform", starterTransform + translateZ);
+
+        starterTransform = $('.back').css("transform");
+        $('.back').css("transform", starterTransform + translateZ);
+
+        starterTransform = $('.top').css("transform");
+        $('.top').css("transform", starterTransform + translateZ);
+
+        starterTransform = $('.bottom').css("transform");
+        $('.bottom').css("transform", starterTransform + translateZ);
+
+        starterTransform = $('.left').css("transform");
+        $('.left').css("transform", starterTransform + translateZ);
+
+        starterTransform = $('.right').css("transform");
+        $('.right').css("transform", starterTransform + translateZ);
+
+        //Construct and transit slices
         slicesArray.each(function(index, element){
-                var slicePositionZ = 220*$(element).data().sliceNum;
+                var slicePositionZ = (cubeSize + marginUnit)*$(element).data().sliceNum;
                 setTransformStyle(element, "translateZ(-"+slicePositionZ+"px)")
             }
         );
-        var swarmHalfDeepness = (slicesArray.length * 220 - 20)/2 - 100;
-        slicesContainer.style.transform = "translateZ("+swarmHalfDeepness+"px)";
+        var gridTranslateZ = ((cubeSize + marginUnit)*(maxDimCount - 1))/2;
+        slicesContainer.style.transform = "translateZ("+gridTranslateZ+"px)";
 
         //subscribe events
         var iceCube = this;

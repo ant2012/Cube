@@ -23,5 +23,6 @@
     <orderEntry type="library" name="interact-1.2.4" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="three" level="application" />
+    <orderEntry type="library" name="html5" level="application" />
   </component>
 </module>

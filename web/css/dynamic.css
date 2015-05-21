@@ -28,7 +28,7 @@
 
 .slices {
     position: relative;
-    width: 450px;
+    width: 340px;
     height: 450px;
     margin: auto;
 
@@ -87,46 +87,46 @@
 }
 
 .cube .front  {
-    -webkit-transform: translateZ(100px);
-    -moz-transform: translateZ(100px);
-    -ms-transform: translateZ(100px);
-    -o-transform: translateZ(100px);
-    transform: translateZ(100px);
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
 }
 .cube .back   {
-    -webkit-transform: rotateY(180deg) translateZ(100px);
-    -moz-transform: rotateY(180deg) translateZ(100px);
-    -ms-transform: rotateY(180deg) translateZ(100px);
-    -o-transform: rotateY(180deg) translateZ(100px);
-    transform: rotateY(180deg) translateZ(100px);;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);;
 }
 .cube .right {
-    -webkit-transform: rotateY(90deg) translateZ(100px);
-    -moz-transform: rotateY(90deg) translateZ(100px);
-    -ms-transform: rotateY(90deg) translateZ(100px);
-    -o-transform: rotateY(90deg) translateZ(100px);
-    transform: rotateY(90deg) translateZ(100px);
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
 }
 .cube .left {
-    -webkit-transform: rotateY(-90deg) translateZ(100px);
-    -moz-transform: rotateY(-90deg) translateZ(100px);
-    -ms-transform: rotateY(-90deg) translateZ(100px);
-    -o-transform: rotateY(-90deg) translateZ(100px);
-    transform: rotateY(-90deg) translateZ(100px);
+    -webkit-transform: rotateY(-90deg);
+    -moz-transform: rotateY(-90deg);
+    -ms-transform: rotateY(-90deg);
+    -o-transform: rotateY(-90deg);
+    transform: rotateY(-90deg);
 }
 .cube .top {
-    -webkit-transform: rotateX(90deg) translateZ(100px);
-    -moz-transform: rotateX(90deg) translateZ(100px);
-    -ms-transform: rotateX(90deg) translateZ(100px);
-    -o-transform: rotateX(90deg) translateZ(100px);
-    transform: rotateX(90deg) translateZ(100px);
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    -ms-transform: rotateX(90deg);
+    -o-transform: rotateX(90deg);
+    transform: rotateX(90deg);
 }
 .cube .bottom {
-    -webkit-transform: rotateX(-90deg) translateZ(100px);
-    -moz-transform: rotateX(-90deg) translateZ(100px);
-    -ms-transform: rotateX(-90deg) translateZ(100px);
-    -o-transform: rotateX(-90deg) translateZ(100px);
-    transform: rotateX(-90deg) translateZ(100px);
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    -ms-transform: rotateX(-90deg);
+    -o-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
 }
 .cube .infoBox {
     position: relative;

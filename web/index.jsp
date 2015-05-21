@@ -17,6 +17,7 @@
 <a href="cube.html">Go Cube</a><br/>
 <a href="slice.html">Go Slice</a><br/>
 <a href="grid.html">Go 3DGrid</a><br/>
+<a href="dynamic.html">Go Dynamic</a><br/>
 <img src="img/splash.png">
 </body>
 </html>
