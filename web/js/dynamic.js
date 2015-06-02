@@ -16,9 +16,13 @@ function CubeInstance(viewport){
 
         var slicesContainer = $(this.domObject).find('.slices')[0];
         var slicesArray = $(slicesContainer).find('.slice');
+        var cubeArray = $('.cube');
 
         //Cube size
-        var cubeMaximumSize = 400;
+        var cubeMaximumSize = 600;
+
+        $(this.viewport).css("perspective", 2*cubeMaximumSize+"px");
+
         var zCount = slicesArray.length;
         var firstSliceLines = $(slicesArray[0]).find('.line');
         var xCount = firstSliceLines.length;
@@ -30,34 +34,65 @@ function CubeInstance(viewport){
         var marginUnit = 0.1*cubeSize;
 
         $('.slices').css("width", (xCount*(cubeSize + marginUnit)+10) + "px");
+        $('.slices').css("height", (yCount*(cubeSize + marginUnit)) + "px");
         $('.line').css("margin", "0 "+marginUnit/2+"px 0");
+
         $('.cube')
-            .css("margin", "0px 0px "+marginUnit+"px")
+            .css("margin-top", marginUnit+"px")
+            .css("margin-bottom", marginUnit+"px")
             .css("height", cubeSize+"px")
             .css("width", cubeSize+"px");
         $('.cube div')
             .css("height", 0.8*cubeSize+"px")
             .css("width", 0.8*cubeSize+"px")
             .css("padding", marginUnit+"px");
+
+        //Dynamic Coloring
+        var index1Array = $('.cube').map(function(index, item){
+            return $(item).data().index1;
+        });
+        var index1MaxVal = Array.max(index1Array);
+        var index1MinVal = Array.min(index1Array);
+        var colorPerUnit = 200 / (index1MaxVal - index1MinVal);
+
+        $('.cube').each(function(index, item){
+            var itemColorValue = parseInt(255 - ($(item).data().index1 - index1MinVal) * colorPerUnit);
+            $(item).find('div').css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", 255, 0.85)");
+            //$(item).find('div').css("background-color", "rgba("+itemColorValue+", 255, "+itemColorValue+", 0.85)");
+            //$(item).find('div').css("background-color", "rgba(255, "+itemColorValue+", "+itemColorValue+", 0.85)");
+
+            $(item).find('div').hover(function(e){
+                var obj = e.target;
+                var parentCube = $(obj).parents('.cube')[0];
+                obj = $(parentCube).find('div');
+                $(obj).css("background-color", "rgba(220, 220, 255, 1)");
+            }, function(e){
+                var obj = e.target;
+                var parentCube = $(obj).parents('.cube')[0];
+                obj = $(parentCube).find('div');
+                $(obj).css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", 255, 0.85)");
+            });
+        });
+
         var translateZ = " translateZ("+cubeSize/2+"px)";
 
         var starterTransform = $('.front').css("transform");
-        $('.front').css("transform", starterTransform + translateZ);
+        setTransformStyleToClass('.front', starterTransform + translateZ);
 
         starterTransform = $('.back').css("transform");
-        $('.back').css("transform", starterTransform + translateZ);
+        setTransformStyleToClass('.back', starterTransform + translateZ);
 
         starterTransform = $('.top').css("transform");
-        $('.top').css("transform", starterTransform + translateZ);
+        setTransformStyleToClass('.top', starterTransform + translateZ);
 
         starterTransform = $('.bottom').css("transform");
-        $('.bottom').css("transform", starterTransform + translateZ);
+        setTransformStyleToClass('.bottom', starterTransform + translateZ);
 
         starterTransform = $('.left').css("transform");
-        $('.left').css("transform", starterTransform + translateZ);
+        setTransformStyleToClass('.left', starterTransform + translateZ);
 
         starterTransform = $('.right').css("transform");
-        $('.right').css("transform", starterTransform + translateZ);
+        setTransformStyleToClass('.right', starterTransform + translateZ);
 
         //Construct and transit slices
         slicesArray.each(function(index, element){
@@ -65,8 +100,8 @@ function CubeInstance(viewport){
                 setTransformStyle(element, "translateZ(-"+slicePositionZ+"px)")
             }
         );
-        var gridTranslateZ = ((cubeSize + marginUnit)*(maxDimCount - 1))/2;
-        slicesContainer.style.transform = "translateZ("+gridTranslateZ+"px)";
+        var gridTranslateZ = ((cubeSize + marginUnit)*(zCount - 1))/2;
+        setTransformStyle(slicesContainer, "translateZ("+gridTranslateZ+"px)");
 
         //subscribe events
         var iceCube = this;
@@ -287,6 +322,14 @@ function constructStyle(matrix){
     return style;
 }
 
+function setTransformStyleToClass(className, style){
+    $(className).css("WebkitTransform", style);
+    $(className).css("MozTransform", style);
+    $(className).css("OTransform", style);
+    $(className).css("msTransform", style);
+    $(className).css("transform", style);
+}
+
 function setTransformStyle(obj, style){
     obj.style.WebkitTransform = style;
     obj.style.MozTransform    = style;
@@ -308,4 +351,26 @@ function toRadians (angle) {
 
 function toDegree (angle) {
     return angle / (Math.PI / 180);
+}
+
+Array.max = function( array ){
+    return Math.max.apply( Math, array );
+};
+
+// Function to get the Min value in Array
+Array.min = function( array ){
+    return Math.min.apply( Math, array );
+};
+
+function setAlpha(obj, alpha){
+    if(obj.tagName!='DIV')return;
+    var baseColor = $(obj).css("background-color");
+    var rgb = rgb2hex(baseColor);
+    var newColor = "rgba("+rgb.R+", "+rgb.G+", "+rgb.B+", "+alpha+")";
+    $(obj).css("background-color", newColor);
+};
+
+function rgb2hex(rgb){
+    rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+    return {R:parseInt(rgb[1],10), G:parseInt(rgb[2],10), B:parseInt(rgb[3],10)};
 }

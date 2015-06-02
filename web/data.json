@@ -1,357 +1,433 @@
 {
-  "grid":{
-    "slices":[
+  "grid": {
+    "slicesDimension1": "productCategory",
+    "linesDimension3": "year",
+    "cubesDimension2": "country",
+    "index1": "salesFact",
+    "slices": [
       {
-        "sliceNum":0,
-        "lines":[
+        "sliceNum": 0,
+        "lines": [
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2005,
-                "productCategory":"food",
-                "salesFact":198
+                "dim1": "electronics",
+                "dim2": "Italy",
+                "dim3": 2011,
+                "index1": 133.42
               },
               {
-                "country":"Italy",
-                "year":2005,
-                "productCategory":"food",
-                "salesFact":250
+                "dim1": "electronics",
+                "dim2": "Italy",
+                "dim3": 2012,
+                "index1": 148.01
               },
               {
-                "country":"Ukraine",
-                "year":2005,
-                "productCategory":"food",
-                "salesFact":54
+                "dim1": "electronics",
+                "dim2": "Italy",
+                "dim3": 2013,
+                "index1": 137.77
               },
               {
-                "country":"Germany",
-                "year":2005,
-                "productCategory":"food",
-                "salesFact":314
+                "dim1": "electronics",
+                "dim2": "Italy",
+                "dim3": 2014,
+                "index1": 127.36
+              },
+              {
+                "dim1": "electronics",
+                "dim2": "Italy",
+                "dim3": 2015,
+                "index1": 128.56
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2006,
-                "productCategory":"food",
-                "salesFact":150
+                "dim1": "electronics",
+                "dim2": "Russia",
+                "dim3": 2011,
+                "index1": 131.88
               },
               {
-                "country":"Italy",
-                "year":2006,
-                "productCategory":"food",
-                "salesFact":165
+                "dim1": "electronics",
+                "dim2": "Russia",
+                "dim3": 2012,
+                "index1": 170.74
               },
               {
-                "country":"Ukraine",
-                "year":2006,
-                "productCategory":"food",
-                "salesFact":61
+                "dim1": "electronics",
+                "dim2": "Russia",
+                "dim3": 2013,
+                "index1": 207.30
               },
               {
-                "country":"Germany",
-                "year":2006,
-                "productCategory":"food",
-                "salesFact":314
+                "dim1": "electronics",
+                "dim2": "Russia",
+                "dim3": 2014,
+                "index1": 161.16
+              },
+              {
+                "dim1": "electronics",
+                "dim2": "Russia",
+                "dim3": 2015,
+                "index1": 143.06
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2007,
-                "productCategory":"food",
-                "salesFact":205
+                "dim1": "electronics",
+                "dim2": "Deutchland",
+                "dim3": 2011,
+                "index1": 167.62
               },
               {
-                "country":"Italy",
-                "year":2007,
-                "productCategory":"food",
-                "salesFact":150
+                "dim1": "electronics",
+                "dim2": "Deutchland",
+                "dim3": 2012,
+                "index1": 137.36
               },
               {
-                "country":"Ukraine",
-                "year":2007,
-                "productCategory":"food",
-                "salesFact":34
+                "dim1": "electronics",
+                "dim2": "Deutchland",
+                "dim3": 2013,
+                "index1": 186.50
               },
               {
-                "country":"Germany",
-                "year":2007,
-                "productCategory":"food",
-                "salesFact":287
+                "dim1": "electronics",
+                "dim2": "Deutchland",
+                "dim3": 2014,
+                "index1": 186.74
+              },
+              {
+                "dim1": "electronics",
+                "dim2": "Deutchland",
+                "dim3": 2015,
+                "index1": 155.48
               }
             ]
           }
         ]
       },
       {
-        "sliceNum":1,
-        "lines":[
+        "sliceNum": 1,
+        "lines": [
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2005,
-                "productCategory":"electronics",
-                "salesFact":198
+                "dim1": "services",
+                "dim2": "Italy",
+                "dim3": 2011,
+                "index1": 95.44
               },
               {
-                "country":"Italy",
-                "year":2005,
-                "productCategory":"electronics",
-                "salesFact":250
+                "dim1": "services",
+                "dim2": "Italy",
+                "dim3": 2012,
+                "index1": 117.52
               },
               {
-                "country":"Ukraine",
-                "year":2005,
-                "productCategory":"electronics",
-                "salesFact":54
+                "dim1": "services",
+                "dim2": "Italy",
+                "dim3": 2013,
+                "index1": 111.46
               },
               {
-                "country":"Germany",
-                "year":2005,
-                "productCategory":"electronics",
-                "salesFact":314
+                "dim1": "services",
+                "dim2": "Italy",
+                "dim3": 2014,
+                "index1": 116.90
+              },
+              {
+                "dim1": "services",
+                "dim2": "Italy",
+                "dim3": 2015,
+                "index1": 130.96
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2006,
-                "productCategory":"electronics",
-                "salesFact":150
+                "dim1": "services",
+                "dim2": "Russia",
+                "dim3": 2011,
+                "index1": 171.61
               },
               {
-                "country":"Italy",
-                "year":2006,
-                "productCategory":"electronics",
-                "salesFact":165
+                "dim1": "services",
+                "dim2": "Russia",
+                "dim3": 2012,
+                "index1": 184.85
               },
               {
-                "country":"Ukraine",
-                "year":2006,
-                "productCategory":"electronics",
-                "salesFact":61
+                "dim1": "services",
+                "dim2": "Russia",
+                "dim3": 2013,
+                "index1": 194.49
               },
               {
-                "country":"Germany",
-                "year":2006,
-                "productCategory":"electronics",
-                "salesFact":314
+                "dim1": "services",
+                "dim2": "Russia",
+                "dim3": 2014,
+                "index1": 169.15
+              },
+              {
+                "dim1": "services",
+                "dim2": "Russia",
+                "dim3": 2015,
+                "index1": 186.92
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2007,
-                "productCategory":"electronics",
-                "salesFact":205
+                "dim1": "services",
+                "dim2": "Deutchland",
+                "dim3": 2011,
+                "index1": 198.75
               },
               {
-                "country":"Italy",
-                "year":2007,
-                "productCategory":"electronics",
-                "salesFact":150
+                "dim1": "services",
+                "dim2": "Deutchland",
+                "dim3": 2012,
+                "index1": 179.14
               },
               {
-                "country":"Ukraine",
-                "year":2007,
-                "productCategory":"electronics",
-                "salesFact":34
+                "dim1": "services",
+                "dim2": "Deutchland",
+                "dim3": 2013,
+                "index1": 179.06
               },
               {
-                "country":"Germany",
-                "year":2007,
-                "productCategory":"electronics",
-                "salesFact":287
+                "dim1": "services",
+                "dim2": "Deutchland",
+                "dim3": 2014,
+                "index1": 174.92
+              },
+              {
+                "dim1": "services",
+                "dim2": "Deutchland",
+                "dim3": 2015,
+                "index1": 151.41
               }
             ]
           }
         ]
       },
       {
-        "sliceNum":2,
-        "lines":[
+        "sliceNum": 2,
+        "lines": [
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2005,
-                "productCategory":"wear",
-                "salesFact":198
+                "dim1": "food",
+                "dim2": "Italy",
+                "dim3": 2011,
+                "index1": 120.93
               },
               {
-                "country":"Italy",
-                "year":2005,
-                "productCategory":"wear",
-                "salesFact":250
+                "dim1": "food",
+                "dim2": "Italy",
+                "dim3": 2012,
+                "index1": 123.45
               },
               {
-                "country":"Ukraine",
-                "year":2005,
-                "productCategory":"wear",
-                "salesFact":54
+                "dim1": "food",
+                "dim2": "Italy",
+                "dim3": 2013,
+                "index1": 128.58
               },
               {
-                "country":"Germany",
-                "year":2005,
-                "productCategory":"wear",
-                "salesFact":314
+                "dim1": "food",
+                "dim2": "Italy",
+                "dim3": 2014,
+                "index1": 156.92
+              },
+              {
+                "dim1": "food",
+                "dim2": "Italy",
+                "dim3": 2015,
+                "index1": 143.67
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2006,
-                "productCategory":"wear",
-                "salesFact":150
+                "dim1": "food",
+                "dim2": "Russia",
+                "dim3": 2011,
+                "index1": 168.13
               },
               {
-                "country":"Italy",
-                "year":2006,
-                "productCategory":"wear",
-                "salesFact":165
+                "dim1": "food",
+                "dim2": "Russia",
+                "dim3": 2012,
+                "index1": 151.17
               },
               {
-                "country":"Ukraine",
-                "year":2006,
-                "productCategory":"wear",
-                "salesFact":61
+                "dim1": "food",
+                "dim2": "Russia",
+                "dim3": 2013,
+                "index1": 186.70
               },
               {
-                "country":"Germany",
-                "year":2006,
-                "productCategory":"wear",
-                "salesFact":314
+                "dim1": "food",
+                "dim2": "Russia",
+                "dim3": 2014,
+                "index1": 143.56
+              },
+              {
+                "dim1": "food",
+                "dim2": "Russia",
+                "dim3": 2015,
+                "index1": 149.98
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2007,
-                "productCategory":"wear",
-                "salesFact":205
+                "dim1": "food",
+                "dim2": "Deutchland",
+                "dim3": 2011,
+                "index1": 193.46
               },
               {
-                "country":"Italy",
-                "year":2007,
-                "productCategory":"wear",
-                "salesFact":150
+                "dim1": "food",
+                "dim2": "Deutchland",
+                "dim3": 2012,
+                "index1": 165.80
               },
               {
-                "country":"Ukraine",
-                "year":2007,
-                "productCategory":"wear",
-                "salesFact":34
+                "dim1": "food",
+                "dim2": "Deutchland",
+                "dim3": 2013,
+                "index1": 160.82
               },
               {
-                "country":"Germany",
-                "year":2007,
-                "productCategory":"wear",
-                "salesFact":287
+                "dim1": "food",
+                "dim2": "Deutchland",
+                "dim3": 2014,
+                "index1": 175.31
+              },
+              {
+                "dim1": "food",
+                "dim2": "Deutchland",
+                "dim3": 2015,
+                "index1": 187.71
               }
             ]
           }
         ]
       },
       {
-        "sliceNum":3,
-        "lines":[
+        "sliceNum": 3,
+        "lines": [
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2005,
-                "productCategory":"services",
-                "salesFact":198
+                "dim1": "wear",
+                "dim2": "Italy",
+                "dim3": 2011,
+                "index1": 133.81
               },
               {
-                "country":"Italy",
-                "year":2005,
-                "productCategory":"services",
-                "salesFact":250
+                "dim1": "wear",
+                "dim2": "Italy",
+                "dim3": 2012,
+                "index1": 109.54
               },
               {
-                "country":"Ukraine",
-                "year":2005,
-                "productCategory":"services",
-                "salesFact":54
+                "dim1": "wear",
+                "dim2": "Italy",
+                "dim3": 2013,
+                "index1": 113.04
               },
               {
-                "country":"Germany",
-                "year":2005,
-                "productCategory":"services",
-                "salesFact":314
+                "dim1": "wear",
+                "dim2": "Italy",
+                "dim3": 2014,
+                "index1": 94.98
+              },
+              {
+                "dim1": "wear",
+                "dim2": "Italy",
+                "dim3": 2015,
+                "index1": 118.78
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2006,
-                "productCategory":"services",
-                "salesFact":150
+                "dim1": "wear",
+                "dim2": "Russia",
+                "dim3": 2011,
+                "index1": 220.63
               },
               {
-                "country":"Italy",
-                "year":2006,
-                "productCategory":"services",
-                "salesFact":165
+                "dim1": "wear",
+                "dim2": "Russia",
+                "dim3": 2012,
+                "index1": 204.64
               },
               {
-                "country":"Ukraine",
-                "year":2006,
-                "productCategory":"services",
-                "salesFact":61
+                "dim1": "wear",
+                "dim2": "Russia",
+                "dim3": 2013,
+                "index1": 170.43
               },
               {
-                "country":"Germany",
-                "year":2006,
-                "productCategory":"services",
-                "salesFact":314
+                "dim1": "wear",
+                "dim2": "Russia",
+                "dim3": 2014,
+                "index1": 179.73
+              },
+              {
+                "dim1": "wear",
+                "dim2": "Russia",
+                "dim3": 2015,
+                "index1": 169.50
               }
             ]
           },
           {
-            "cubes":[
+            "cubes": [
               {
-                "country":"Russia",
-                "year":2007,
-                "productCategory":"services",
-                "salesFact":205
+                "dim1": "wear",
+                "dim2": "Deutchland",
+                "dim3": 2011,
+                "index1": 190.99
               },
               {
-                "country":"Italy",
-                "year":2007,
-                "productCategory":"services",
-                "salesFact":150
+                "dim1": "wear",
+                "dim2": "Deutchland",
+                "dim3": 2012,
+                "index1": 192.53
               },
               {
-                "country":"Ukraine",
-                "year":2007,
-                "productCategory":"services",
-                "salesFact":34
+                "dim1": "wear",
+                "dim2": "Deutchland",
+                "dim3": 2013,
+                "index1": 170.10
               },
               {
-                "country":"Germany",
-                "year":2007,
-                "productCategory":"services",
-                "salesFact":287
+                "dim1": "wear",
+                "dim2": "Deutchland",
+                "dim3": 2014,
+                "index1": 211.77
+              },
+              {
+                "dim1": "wear",
+                "dim2": "Deutchland",
+                "dim3": 2015,
+                "index1": 148.88
               }
             ]
           }
@@ -360,3 +436,4 @@
     ]
   }
 }
+

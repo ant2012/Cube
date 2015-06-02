@@ -1,9 +1,4 @@
 .viewport {
-    -webkit-perspective: 800px;
-    -moz-perspective: 800px;
-    -ms-perspective: 800px;
-    perspective: 800px;
-
     -webkit-transform: scale(0.75, 0.75);
     -moz-transform: scale(0.75, 0.75);
     -ms-transform: scale(0.75, 0.75);
@@ -12,8 +7,6 @@
 }
 
 .grid {
-    position: relative;
-
     -webkit-transition: transform ease;
     -moz-transition: transform ease;
     -ms-transition: transform ease;
@@ -27,11 +20,7 @@
 }
 
 .slices {
-    position: relative;
-    width: 340px;
-    height: 450px;
     margin: auto;
-
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
@@ -40,7 +29,6 @@
 
 .slice {
     position: absolute;
-
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
@@ -49,41 +37,24 @@
 
 .line {
     display: inline-block;
-    margin: 0 10px 0;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
 }
 
 .cube {
-    position: relative;
-    margin: 0 0 20px;
-    height: 200px;
-    width: 200px;
-
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
 }
 
 .cube > div {
     position: absolute;
-    height: 160px;
-    width: 160px;
-    padding: 20px;
-    background-color: rgba(50, 50, 50, 0.5);
+    background-color: rgba(255, 255, 255, 0.85);
     font-size: 1em;
     line-height: 1em;
-    color: #fff;
+    color: #000;
     border: 1px solid #555;
     border-radius: 3px;
     text-align: center;
 }
 
 .cube > div:hover {
-    background-color: rgba(50, 50, 50, 0.9);
+    background-color: rgba(240, 240, 255, 1);
 }
 
 .cube .front  {
@@ -93,6 +64,15 @@
     -o-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
+
+.cube ul {
+    font-family: monospace;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
 .cube .back   {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
@@ -127,7 +107,4 @@
     -ms-transform: rotateX(-90deg);
     -o-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
-}
-.cube .infoBox {
-    position: relative;
 }

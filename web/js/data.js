@@ -6,14 +6,22 @@ function constructCube(data){
         $.each(slice.lines, function(lineIndex, line){
             var lineDom = $("<div class='line'>").appendTo(sliceDom);
             $.each(line.cubes, function(cubeIndex, cube){
-                var cubeDom = $("<div class='cube'>").appendTo(lineDom);
+                var cubeDom = $("<div class='cube'>").attr("data-index1", cube.index1).appendTo(lineDom);
 
-                $("<div class='front'>").append("front").appendTo(cubeDom);
-                $("<div class='back'>").append("back").appendTo(cubeDom);
-                $("<div class='right'>").append("right").appendTo(cubeDom);
-                $("<div class='left'>").append("left").appendTo(cubeDom);
-                $("<div class='top'>").append("top").appendTo(cubeDom);
-                $("<div class='bottom'>").append("bottom").appendTo(cubeDom);
+                var cubeFrontContent = "<ul>";
+                cubeFrontContent += "<li title='"+data.grid.slicesDimension1+"'>" + cube.dim1 + "</li>";
+                cubeFrontContent += "<li title='"+data.grid.cubesDimension2+"'>" + cube.dim2 + "</li>";
+                cubeFrontContent += "<li title='"+data.grid.linesDimension3+"'>" + cube.dim3 + "</li>";
+                cubeFrontContent += "</ul>";
+
+                cubeFrontContent += "<label title='"+data.grid.index1+"'>"+cube.index1+"</label>";
+
+                $("<div class='front'>").append(cubeFrontContent).appendTo(cubeDom);
+                $("<div class='back'>").append(cubeFrontContent).appendTo(cubeDom);
+                $("<div class='right'>").append(cubeFrontContent).appendTo(cubeDom);
+                $("<div class='left'>").append(cubeFrontContent).appendTo(cubeDom);
+                $("<div class='top'>").append(cubeFrontContent).appendTo(cubeDom);
+                $("<div class='bottom'>").append(cubeFrontContent).appendTo(cubeDom);
             })
         });
         sliceDom.appendTo($('.slices'));
