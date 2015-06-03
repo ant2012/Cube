@@ -1,0 +1,153 @@
+.faceHeader {
+    position: relative;
+    color: #fff;
+    background-color: rgba(51, 122, 183, 1);
+    margin: 0 auto 100px;
+    padding: 10px;
+    transition: background-color 1s ease;
+    z-index: 500;
+}
+
+.faceHeaderUndefined {
+    background-color: rgba(51, 122, 183, 0.1);
+    transition: background-color 2s ease;
+}
+
+.topAxis {
+    position: relative;
+    width: 384px;
+    margin: auto;
+    color: #fff;
+    background-color: rgba(51, 122, 183, 1);
+    transition: background-color 1s ease, transform 1s ease;
+    transform: translateZ(258px);
+    z-index: 501;
+}
+
+.topAxisDim {
+    text-align: center;
+    width: 120px;
+    display: inline-block;
+}
+.axisSplitter {
+    margin: 0;
+    width: 12px;
+    display: inline-block;
+}
+
+.axisUndefined {
+    background-color: rgba(51, 122, 183, 0.1);
+    transition: background-color 2s ease;
+}
+
+.viewport {
+    -webkit-transform: scale(0.75, 0.75);
+    -moz-transform: scale(0.75, 0.75);
+    -ms-transform: scale(0.75, 0.75);
+    -o-transform: scale(0.75, 0.75);
+    transform: scale(0.75, 0.75);
+}
+
+.grid {
+    margin: auto;
+
+    -webkit-transition: transform ease;
+    -moz-transition: transform ease;
+    -ms-transition: transform ease;
+    -o-transition: transform ease;
+    transition: transform ease;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.slices {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.slice {
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.line {
+    display: inline-block;
+}
+
+.cube {
+}
+
+.cube > div {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.85);
+    font-size: 1em;
+    line-height: 1em;
+    color: #000;
+    border: 1px solid #555;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.cube > div:hover {
+    background-color: rgba(240, 240, 255, 1);
+}
+
+.cube .front  {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.cube ul {
+    font-family: monospace;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.cube .back   {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);;
+}
+.cube .right {
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+}
+.cube .left {
+    -webkit-transform: rotateY(-90deg);
+    -moz-transform: rotateY(-90deg);
+    -ms-transform: rotateY(-90deg);
+    -o-transform: rotateY(-90deg);
+    transform: rotateY(-90deg);
+}
+.cube .top {
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    -ms-transform: rotateX(90deg);
+    -o-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+}
+.cube .bottom {
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    -ms-transform: rotateX(-90deg);
+    -o-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+}

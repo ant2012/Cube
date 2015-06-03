@@ -1,17 +1,27 @@
 function constructCube(data){
     if(!data)return false;
 
+    $('.grid')
+        .attr("data-dim1-name", data.grid.slicesDimension1)
+        .attr("data-dim2-name", data.grid.cubesDimension2)
+        .attr("data-dim3-name", data.grid.linesDimension3);
+
     $.each(data.grid.slices, function(sliceIndex, slice){
         var sliceDom = $("<div class='slice'>").attr("data-slice-num", slice.sliceNum);
         $.each(slice.lines, function(lineIndex, line){
             var lineDom = $("<div class='line'>").appendTo(sliceDom);
             $.each(line.cubes, function(cubeIndex, cube){
-                var cubeDom = $("<div class='cube'>").attr("data-index1", cube.index1).appendTo(lineDom);
+                var cubeDom = $("<div class='cube'>")
+                    //.attr("data-dim1", cube.dim1)
+                    //.attr("data-dim2", cube.dim2)
+                    //.attr("data-dim3", cube.dim3)
+                    .attr("data-index1", cube.index1)
+                    .appendTo(lineDom);
 
                 var cubeFrontContent = "<ul>";
-                cubeFrontContent += "<li title='"+data.grid.slicesDimension1+"'>" + cube.dim1 + "</li>";
-                cubeFrontContent += "<li title='"+data.grid.cubesDimension2+"'>" + cube.dim2 + "</li>";
-                cubeFrontContent += "<li title='"+data.grid.linesDimension3+"'>" + cube.dim3 + "</li>";
+                cubeFrontContent += "<li class='dim1' title='"+data.grid.slicesDimension1+"'>" + cube.dim1 + "</li>";
+                cubeFrontContent += "<li class='dim2' title='"+data.grid.cubesDimension2+"'>" + cube.dim2 + "</li>";
+                cubeFrontContent += "<li class='dim3' title='"+data.grid.linesDimension3+"'>" + cube.dim3 + "</li>";
                 cubeFrontContent += "</ul>";
 
                 cubeFrontContent += "<label title='"+data.grid.index1+"'>"+cube.index1+"</label>";
@@ -39,7 +49,7 @@ function getJsonData(){
     });
     jqxhr.done(function(data) {
         constructCube(data);
-        var cube = new CubeInstance($('.viewport')[0]);
+        var cube = new CubeInstance($('.viewport')[0], data);
         subscribeCubeEvents(cube);
     });
 }
