@@ -2,7 +2,7 @@
     position: relative;
     color: #fff;
     background-color: rgba(51, 122, 183, 1);
-    margin: 0 auto 100px;
+    margin: 0 auto;
     padding: 10px;
     transition: background-color 1s ease;
     z-index: 500;
@@ -15,23 +15,39 @@
 
 .topAxis {
     position: relative;
-    width: 384px;
     margin: auto;
     color: #fff;
     background-color: rgba(51, 122, 183, 1);
     transition: background-color 1s ease, transform 1s ease;
-    transform: translateZ(258px);
     z-index: 501;
 }
 
 .topAxisDim {
     text-align: center;
-    width: 120px;
     display: inline-block;
 }
+
 .axisSplitter {
     margin: 0;
-    width: 12px;
+    display: inline-block;
+}
+
+.leftAxis {
+    /*font-size: 0px;*/
+    position: relative;
+    /*width: 648px;*/
+    margin: auto;
+    color: #fff;
+    background-color: rgba(51, 122, 183, 1);
+    transition: background-color 1s ease, transform 1s ease;
+    /*transform: translateZ(258px) translateY(346px) translateX(-220px) rotateZ(-90deg);*/
+    z-index: 501;
+}
+
+.leftAxisDim {
+    /*font-size: small;*/
+    text-align: center;
+    /*width: 120px;*/
     display: inline-block;
 }
 

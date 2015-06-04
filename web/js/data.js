@@ -6,15 +6,16 @@ function constructCube(data){
         .attr("data-dim2-name", data.grid.cubesDimension2)
         .attr("data-dim3-name", data.grid.linesDimension3);
 
+    $('.slices').empty();
     $.each(data.grid.slices, function(sliceIndex, slice){
         var sliceDom = $("<div class='slice'>").attr("data-slice-num", slice.sliceNum);
         $.each(slice.lines, function(lineIndex, line){
             var lineDom = $("<div class='line'>").appendTo(sliceDom);
             $.each(line.cubes, function(cubeIndex, cube){
                 var cubeDom = $("<div class='cube'>")
-                    //.attr("data-dim1", cube.dim1)
-                    //.attr("data-dim2", cube.dim2)
-                    //.attr("data-dim3", cube.dim3)
+                    .attr("data-dim1", cube.dim1)
+                    .attr("data-dim2", cube.dim2)
+                    .attr("data-dim3", cube.dim3)
                     .attr("data-index1", cube.index1)
                     .appendTo(lineDom);
 

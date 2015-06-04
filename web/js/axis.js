@@ -6,6 +6,7 @@ function CubeInstance(viewport, data){
     this.dataSet = new CubeDataSet(data);
     this.faceHeader = $(viewport).find('.faceHeader')[0];
     this.topAxis = $(viewport).find('.topAxis')[0];
+    this.leftAxis = $(viewport).find('.leftAxis')[0];
     this.infoBox = $(viewport).find('.infoBox')[0];
     this.domObject = $(viewport).find('.grid')[0];
     this.faces = new Faces();
@@ -110,7 +111,7 @@ function CubeInstance(viewport, data){
         setTransformStyle(slicesContainer, "translateZ("+gridTranslateZ+"px)");
 
         $(this.faceHeader).css("width", (1.1*cubeMaximumSize-20+marginUnit) + "px");
-        setTransformStyle(this.faceHeader, "translateZ("+cubeMaximumSize/4+"px)");
+        setTransformStyle(this.faceHeader, "translateZ("+cubeMaximumSize/2+"px)");
 
         //subscribe events
         var iceCube = this;
@@ -226,6 +227,9 @@ function CubeInstance(viewport, data){
         //Top Axis
         $(this.topAxis).toggleClass('axisUndefined', false);
         this.constructTopAxis(face);
+        //Left Axis
+        $(this.leftAxis).toggleClass('axisUndefined', false);
+        this.constructLeftAxis(face);
         //Cubes faces
         switch (face.fixedDimension){
             case "slicesDimension1":
@@ -244,39 +248,106 @@ function CubeInstance(viewport, data){
                 $(this.domObject).find('.dim3').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
                 break;
         }
-    }
+    };
 
     this.deActivateFaceInfo = function(){
         //Face Header
         $(this.faceHeader).toggleClass('faceHeaderUndefined', true);
         //Top axis
         $(this.topAxis).toggleClass('axisUndefined', true);
+        //Left axis
+        $(this.leftAxis).toggleClass('axisUndefined', true);
         //Cubes faces
         $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
         $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
         $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
-    }
+    };
 
     this.constructTopAxis = function(face){
+        var dimNumber = this.dataSet.getTopDimNumber(face);
         var dimValues = this.dataSet.getTopDimValues(face);
         var faceDeepness = this.dataSet.getFaceDeepness(face);
         var maxDimCount = this.dataSet.getMaxDimCount();
         var faceHeight = this.dataSet.getFaceHeight(face);
         var diffY = maxDimCount - faceHeight;
         var marginUnit = 0.1*this.cubeSize;
-        $(".topAxis")[0].innerHTML = "";
+        $(".topAxis").empty();
         $(".topAxis").css("width", this.cubeSize*dimValues.length + marginUnit*(dimValues.length - 1)+"px");
-        $(".topAxis").css("transform", "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px)" + "translateY("+(diffY*(this.cubeSize + marginUnit))/2+"px)");
+        $(".topAxis").css("transform", "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px)" + " translateY("+(diffY*(this.cubeSize + marginUnit))/2+"px)");
         $.each(dimValues, function(dimIndex, dim){
             if(dimIndex>0){
                 $('<div class="axisSplitter">').appendTo($(".topAxis"));
             }
-            var dimDiv = $('<div class="topAxisDim">').appendTo($(".topAxis"));
+            var dimDiv = $('<div class="topAxisDim">')
+                .appendTo($(".topAxis"));
             dimDiv[0].innerText = dim;
+
+            $(dimDiv).hover(function(e){
+                var obj = e.target;
+                var dimValue = obj.innerText;
+                $(obj)
+                    .css("background-color", "rgba(255, 255, 204, 1)")
+                    .css("color", "#000");
+                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+            }, function(e){
+                var obj = e.target;
+                var dimValue = obj.innerText;
+                $(obj)
+                    .css("background-color", "rgba(51, 122, 183, 1)")
+                    .css("color", "#fff");
+                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+            });
+
         });
         $(".topAxisDim").css("width", this.cubeSize+"px");
         $(".axisSplitter").css("width", marginUnit+"px");
-    }
+    };
+
+    this.constructLeftAxis = function(face){
+        var dimNumber = this.dataSet.getLeftDimNumber(face);
+        var dimValues = this.dataSet.getLeftDimValues(face);
+        var faceDeepness = this.dataSet.getFaceDeepness(face);
+        var maxDimCount = this.dataSet.getMaxDimCount();
+        var faceHeight = this.dataSet.getFaceHeight(face);
+        var faceWidth = this.dataSet.getFaceWidth(face);
+        var diffY = maxDimCount - faceHeight;
+        var marginUnit = 0.1*this.cubeSize;
+        var leftAxisWidth = this.cubeSize*dimValues.length + marginUnit*(dimValues.length - 1);
+        $(".leftAxis").empty();
+        $(".leftAxis").css("width", leftAxisWidth + "px");
+        var transformProperty =
+            "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px) " +
+            "translateY("+(leftAxisWidth/2 + 21 + (diffY*(this.cubeSize + marginUnit)/2))+"px) " +
+            "translateX(-"+(faceWidth*(this.cubeSize + marginUnit)/2 + 12 + 20)+"px) " +
+            "rotateZ(-90deg)";
+        $(".leftAxis").css("transform", transformProperty);
+        $.each(dimValues, function(dimIndex, dim){
+            if(dimIndex>0){
+                $('<div class="axisSplitter">').appendTo($(".leftAxis"));
+            }
+            var dimDiv = $('<div class="leftAxisDim">').appendTo($(".leftAxis"));
+            dimDiv[0].innerText = dim;
+
+            $(dimDiv).hover(function(e){
+                var obj = e.target;
+                var dimValue = obj.innerText;
+                $(obj)
+                    .css("background-color", "rgba(255, 255, 204, 1)")
+                    .css("color", "#000");
+                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+            }, function(e){
+                var obj = e.target;
+                var dimValue = obj.innerText;
+                $(obj)
+                    .css("background-color", "rgba(51, 122, 183, 1)")
+                    .css("color", "#fff");
+                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+            });
+
+        });
+        $(".leftAxisDim").css("width", this.cubeSize+"px");
+        $(".axisSplitter").css("width", marginUnit+"px");
+    };
 
     this.init();
 }
@@ -465,6 +536,34 @@ function CubeDataSet(data){
             default: return "undefined";
         }
     };
+    this.getTopDimNumber = function (face){
+        switch (face.name){
+            case "front":
+            case "back":
+                return "dim2";
+            case "left":
+            case "right":
+                return "dim1";
+            case "top":
+            case "bottom":
+                return "dim2";
+            default: return false;
+        }
+    };
+    this.getLeftDimNumber = function (face){
+        switch (face.name){
+            case "front":
+            case "back":
+                return "dim3";
+            case "left":
+            case "right":
+                return "dim3";
+            case "top":
+            case "bottom":
+                return "dim1";
+            default: return false;
+        }
+    };
     this.getTopDimValues = function (face){
         switch (face.name){
             case "front":
@@ -479,6 +578,23 @@ function CubeDataSet(data){
                 return this.dimValues.dim2;
             case "bottom":
                 return this.dimValues.dim2;
+            default: return false;
+        }
+    };
+    this.getLeftDimValues = function (face){
+        switch (face.name){
+            case "front":
+                return this.dimValues.dim3Reverse;
+            case "back":
+                return this.dimValues.dim3Reverse;
+            case "left":
+                return this.dimValues.dim3Reverse;
+            case "right":
+                return this.dimValues.dim3Reverse;
+            case "top":
+                return this.dimValues.dim1;
+            case "bottom":
+                return this.dimValues.dim1Reverse;
             default: return false;
         }
     };
@@ -506,6 +622,20 @@ function CubeDataSet(data){
             case "top":
             case "bottom":
                 return this.dimValues.dim1.length;
+            default: return false;
+        }
+    };
+    this.getFaceWidth = function(face){
+        switch (face.name){
+            case "front":
+            case "back":
+                return this.dimValues.dim2.length;
+            case "left":
+            case "right":
+                return this.dimValues.dim1.length;
+            case "top":
+            case "bottom":
+                return this.dimValues.dim2.length;
             default: return false;
         }
     };
