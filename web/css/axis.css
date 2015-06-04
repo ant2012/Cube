@@ -13,44 +13,34 @@
     transition: background-color 2s ease;
 }
 
-.topAxis {
+.axis {
     position: relative;
     margin: auto;
+    z-index: 501;
     color: #fff;
     background-color: rgba(51, 122, 183, 1);
     transition: background-color 1s ease, transform 1s ease;
-    z-index: 501;
 }
-
-.topAxisDim {
+.topAxis {
+}
+.leftAxis {
+}
+.axisDim {
     text-align: center;
     display: inline-block;
+    /*background-color: rgba(51, 122, 183, 1);*/
+    /*z-index: 499;*/
 }
-
+.axisDim:hover {
+    background-color: rgba(255, 255, 204, 1);
+    color: #000;
+}
 .axisSplitter {
     margin: 0;
     display: inline-block;
+    background-color: rgba(255, 255, 255, 1);
+    transition: background-color 2s ease;
 }
-
-.leftAxis {
-    /*font-size: 0px;*/
-    position: relative;
-    /*width: 648px;*/
-    margin: auto;
-    color: #fff;
-    background-color: rgba(51, 122, 183, 1);
-    transition: background-color 1s ease, transform 1s ease;
-    /*transform: translateZ(258px) translateY(346px) translateX(-220px) rotateZ(-90deg);*/
-    z-index: 501;
-}
-
-.leftAxisDim {
-    /*font-size: small;*/
-    text-align: center;
-    /*width: 120px;*/
-    display: inline-block;
-}
-
 .axisUndefined {
     background-color: rgba(51, 122, 183, 0.1);
     transition: background-color 2s ease;

@@ -37,6 +37,7 @@ function CubeInstance(viewport, data){
         var cubeSize = cubeMaximumSize/maxDimCount;
         this.cubeSize = cubeSize;
         var marginUnit = 0.1*cubeSize;
+        this.marginUnit = marginUnit;
 
         $('.grid').css("width", (xCount*(cubeSize + marginUnit)) + "px");
         $('.grid').css("height", (yCount*(cubeSize + marginUnit)+marginUnit) + "px");
@@ -60,11 +61,11 @@ function CubeInstance(viewport, data){
         });
         var index1MaxVal = Array.max(index1Array);
         var index1MinVal = Array.min(index1Array);
-        var colorPerUnit = 200 / (index1MaxVal - index1MinVal);
+        var colorPerUnit = 255 / (index1MaxVal - index1MinVal);
 
         $('.cube').each(function(index, item){
             var itemColorValue = parseInt(255 - ($(item).data().index1 - index1MinVal) * colorPerUnit);
-            $(item).find('div').css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", 255, 0.85)");
+            $(item).find('div').css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", "+255+", 0.85)");
             //$(item).find('div').css("background-color", "rgba("+itemColorValue+", 255, "+itemColorValue+", 0.85)");
             //$(item).find('div').css("background-color", "rgba(255, "+itemColorValue+", "+itemColorValue+", 0.85)");
 
@@ -77,7 +78,7 @@ function CubeInstance(viewport, data){
                 var obj = e.target;
                 var parentCube = $(obj).parents('.cube')[0];
                 obj = $(parentCube).find('div');
-                $(obj).css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", 255, 0.85)");
+                $(obj).css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", "+255+", 0.85)");
             });
         });
 
@@ -224,12 +225,10 @@ function CubeInstance(viewport, data){
         var fixedDimName = this.dataSet.getFaceFixedDimName(face);
         var fixedDimValue = this.dataSet.getFaceFixedDimValue(face);
         this.faceHeader.innerText = fixedDimName + "=" + fixedDimValue;
-        //Top Axis
-        $(this.topAxis).toggleClass('axisUndefined', false);
-        this.constructTopAxis(face);
-        //Left Axis
-        $(this.leftAxis).toggleClass('axisUndefined', false);
-        this.constructLeftAxis(face);
+        //Axis
+        this.constructAxis(face);
+        $('.axis').toggleClass('axisUndefined', false);
+
         //Cubes faces
         switch (face.fixedDimension){
             case "slicesDimension1":
@@ -253,10 +252,9 @@ function CubeInstance(viewport, data){
     this.deActivateFaceInfo = function(){
         //Face Header
         $(this.faceHeader).toggleClass('faceHeaderUndefined', true);
-        //Top axis
-        $(this.topAxis).toggleClass('axisUndefined', true);
-        //Left axis
-        $(this.leftAxis).toggleClass('axisUndefined', true);
+        //Axis
+        $('.axis').toggleClass('axisUndefined', true);
+        $('.axisSplitter').css("background-color", "rgba(255, 255, 255, 0)")
         //Cubes faces
         $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
         $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
@@ -270,37 +268,30 @@ function CubeInstance(viewport, data){
         var maxDimCount = this.dataSet.getMaxDimCount();
         var faceHeight = this.dataSet.getFaceHeight(face);
         var diffY = maxDimCount - faceHeight;
-        var marginUnit = 0.1*this.cubeSize;
+        var marginUnit = this.marginUnit;
         $(".topAxis").empty();
         $(".topAxis").css("width", this.cubeSize*dimValues.length + marginUnit*(dimValues.length - 1)+"px");
         $(".topAxis").css("transform", "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px)" + " translateY("+(diffY*(this.cubeSize + marginUnit))/2+"px)");
         $.each(dimValues, function(dimIndex, dim){
             if(dimIndex>0){
-                $('<div class="axisSplitter">').appendTo($(".topAxis"));
+                var splitter = $('<div class="axisSplitter">').appendTo($(".topAxis"));
+                splitter[0].innerHTML = "&nbsp;";
             }
-            var dimDiv = $('<div class="topAxisDim">')
+            var dimDiv = $('<div class="axisDim">')
                 .appendTo($(".topAxis"));
             dimDiv[0].innerText = dim;
 
             $(dimDiv).hover(function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(obj)
-                    .css("background-color", "rgba(255, 255, 204, 1)")
-                    .css("color", "#000");
                 $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
             }, function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(obj)
-                    .css("background-color", "rgba(51, 122, 183, 1)")
-                    .css("color", "#fff");
                 $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
             });
 
         });
-        $(".topAxisDim").css("width", this.cubeSize+"px");
-        $(".axisSplitter").css("width", marginUnit+"px");
     };
 
     this.constructLeftAxis = function(face){
@@ -311,7 +302,7 @@ function CubeInstance(viewport, data){
         var faceHeight = this.dataSet.getFaceHeight(face);
         var faceWidth = this.dataSet.getFaceWidth(face);
         var diffY = maxDimCount - faceHeight;
-        var marginUnit = 0.1*this.cubeSize;
+        var marginUnit = this.marginUnit;
         var leftAxisWidth = this.cubeSize*dimValues.length + marginUnit*(dimValues.length - 1);
         $(".leftAxis").empty();
         $(".leftAxis").css("width", leftAxisWidth + "px");
@@ -323,30 +314,32 @@ function CubeInstance(viewport, data){
         $(".leftAxis").css("transform", transformProperty);
         $.each(dimValues, function(dimIndex, dim){
             if(dimIndex>0){
-                $('<div class="axisSplitter">').appendTo($(".leftAxis"));
+                var splitter = $('<div class="axisSplitter">').appendTo($(".leftAxis"));
+                splitter[0].innerHTML = "&nbsp;";
             }
-            var dimDiv = $('<div class="leftAxisDim">').appendTo($(".leftAxis"));
+            var dimDiv = $('<div class="axisDim">').appendTo($(".leftAxis"));
             dimDiv[0].innerText = dim;
 
             $(dimDiv).hover(function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(obj)
-                    .css("background-color", "rgba(255, 255, 204, 1)")
-                    .css("color", "#000");
                 $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
             }, function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(obj)
-                    .css("background-color", "rgba(51, 122, 183, 1)")
-                    .css("color", "#fff");
                 $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
             });
 
         });
-        $(".leftAxisDim").css("width", this.cubeSize+"px");
+        $(".axisDim").css("width", this.cubeSize+"px");
         $(".axisSplitter").css("width", marginUnit+"px");
+    };
+
+    this.constructAxis = function(face){
+        this.constructTopAxis(face);
+        this.constructLeftAxis(face);
+        $(".axisDim").css("width", this.cubeSize+"px");
+        $(".axisSplitter").css("width", this.marginUnit+"px");
     };
 
     this.init();
