@@ -6,7 +6,7 @@ Github Hot Preview: [Cube](http://htmlpreview.github.io/?https://github.com/ant2
 [Slice](http://htmlpreview.github.io/?https://github.com/ant2012/Cube/blob/master/web/slice.html)
 [Grid](http://htmlpreview.github.io/?https://github.com/ant2012/Cube/blob/master/web/grid.html)
 
-[Heroku Snapshot](https://cube-analytics.herokuapp.com/)
+[Heroku Snapshot](https://cube-analytics.herokuapp.com/) *(Including dynamic cube generation)*
 
 ![Slice Splash](/web/img/splash.png)
 
