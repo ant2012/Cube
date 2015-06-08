@@ -219,6 +219,7 @@ function applyMatrixStyle(obj, style){
 function setTransitionStyle(obj, style){
     obj.style.webkitTransition = style;
     obj.style.mozTransition    = style;
+    obj.style.msTransition     = style;
     obj.style.oTransition      = style;
     obj.style.transition       = style;
 }

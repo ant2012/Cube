@@ -61,24 +61,34 @@ function CubeInstance(viewport, data){
         });
         var index1MaxVal = Array.max(index1Array);
         var index1MinVal = Array.min(index1Array);
-        var colorPerUnit = 255 / (index1MaxVal - index1MinVal);
+        var index1Difference = index1MaxVal - index1MinVal;
+
+        var color1 = rgb(255, 255, 255);
+        var color2 = rgb(21, 92, 153);
+
+        var hoverColor1 = rgb(255, 255, 204);
+        var hoverColor2 = rgb(240, 173, 78);
 
         $('.cube').each(function(index, item){
-            var itemColorValue = parseInt(255 - ($(item).data().index1 - index1MinVal) * colorPerUnit);
-            $(item).find('div').css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", "+255+", 0.85)");
-            //$(item).find('div').css("background-color", "rgba("+itemColorValue+", 255, "+itemColorValue+", 0.85)");
-            //$(item).find('div').css("background-color", "rgba(255, "+itemColorValue+", "+itemColorValue+", 0.85)");
+            var itemColorPercent = ($(item).data().index1 - index1MinVal)/index1Difference;
+
+            var itemColorValue = getGradientPoint(color1, color2, itemColorPercent);
+            var itemHoverColorValue = getGradientPoint(hoverColor1, hoverColor2, itemColorPercent);
+            $(item).find('div').css("background-color", "rgba("+itemColorValue.red+", "+itemColorValue.green+", "+itemColorValue.blue+", 1)");
+            $(item).find('div').find('.dimList').css("color", "rgba("+itemColorValue.red+", "+itemColorValue.green+", "+itemColorValue.blue+", 1)");
 
             $(item).find('div').hover(function(e){
                 var obj = e.target;
                 var parentCube = $(obj).parents('.cube')[0];
                 obj = $(parentCube).find('div');
-                $(obj).css("background-color", "rgba(255, 255, 204, 1)");
+                $(obj).css("background-color", "rgba("+itemHoverColorValue.red+", "+itemHoverColorValue.green+", "+itemHoverColorValue.blue+", 1)");
+                $(obj).find('.dimList').css("color", "rgba("+0+", "+0+", "+0+", 1)");
             }, function(e){
                 var obj = e.target;
                 var parentCube = $(obj).parents('.cube')[0];
                 obj = $(parentCube).find('div');
-                $(obj).css("background-color", "rgba("+itemColorValue+", "+itemColorValue+", "+255+", 0.85)");
+                $(obj).css("background-color", "rgba("+itemColorValue.red+", "+itemColorValue.green+", "+itemColorValue.blue+", 1)");
+                $(obj).find('.dimList').css("color", "rgba("+itemColorValue.red+", "+itemColorValue.green+", "+itemColorValue.blue+", 1)");
             });
         });
 
@@ -148,7 +158,7 @@ function CubeInstance(viewport, data){
     //rotate viewport from starting position (none relative)
     this.rotateToAngles = function(angles){
         if(this.isDebugMode)console.log("Rotate by angles: dX="+angles.x+"; dY="+angles.y+"; dZ="+angles.z);
-        setTransitionStyle(this.domObject, "transform 1s ease");
+        setTransitionStyle(this.domObject, "1s ease");
         var x = toRadians(angles.x);
         var y = toRadians(angles.y);
         var z = toRadians(angles.z);
@@ -187,7 +197,7 @@ function CubeInstance(viewport, data){
         if(this.isDebugMode)console.log("Starter mouseDown: pageX="+evt.pageX+"; pageY="+evt.pageY);
 
         this.mouseVector = new MouseVector(evt.pageX, evt.pageY);
-        setTransitionStyle(this.domObject, "transform");
+        setTransitionStyle(this.domObject, "");
     };
     this.mouseUp = function(evt){
         if(this.mouseVector.isFinalized)return true;
@@ -211,7 +221,7 @@ function CubeInstance(viewport, data){
     //After user interaction
     this.simpleSlowDown = function(){
         if(this.isDebugMode)console.log("Simple SlowDown: X="+this.mouseVector.x+"; Y="+this.mouseVector.y);
-        setTransitionStyle(this.domObject, "transform 300ms ease-out");
+        setTransitionStyle(this.domObject, "300ms ease-out");
         this.rotateByMouse(this.mouseVector.x, this.mouseVector.y);
     };
     this.showNearestFace = function(){
@@ -230,23 +240,23 @@ function CubeInstance(viewport, data){
         $('.axis').toggleClass('axisUndefined', false);
 
         //Cubes faces
-        switch (face.fixedDimension){
-            case "slicesDimension1":
-                $(this.domObject).find('.dim1').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
-                $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
-                $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
-                break;
-            case "cubesDimension2":
-                $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
-                $(this.domObject).find('.dim2').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
-                $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
-                break;
-            case "linesDimension3":
-                $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
-                $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
-                $(this.domObject).find('.dim3').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
-                break;
-        }
+        //switch (face.fixedDimension){
+        //    case "slicesDimension1":
+        //        $(this.domObject).find('.dim1').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
+        //        $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
+        //        $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
+        //        break;
+        //    case "cubesDimension2":
+        //        $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
+        //        $(this.domObject).find('.dim2').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
+        //        $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
+        //        break;
+        //    case "linesDimension3":
+        //        $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
+        //        $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
+        //        $(this.domObject).find('.dim3').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
+        //        break;
+        //}
     };
 
     this.deActivateFaceInfo = function(){
@@ -256,9 +266,9 @@ function CubeInstance(viewport, data){
         $('.axis').toggleClass('axisUndefined', true);
         $('.axisSplitter').css("background-color", "rgba(255, 255, 255, 0)")
         //Cubes faces
-        $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
-        $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
-        $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
+        //$(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
+        //$(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
+        //$(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
     };
 
     this.constructTopAxis = function(face){
@@ -271,7 +281,8 @@ function CubeInstance(viewport, data){
         var marginUnit = this.marginUnit;
         $(".topAxis").empty();
         $(".topAxis").css("width", this.cubeSize*dimValues.length + marginUnit*(dimValues.length - 1)+"px");
-        $(".topAxis").css("transform", "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px)" + " translateY("+(diffY*(this.cubeSize + marginUnit))/2+"px)");
+        var transformProperty = "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px)" + " translateY("+(diffY*(this.cubeSize + marginUnit))/2+"px)";
+        setTransformStyleToClass(".topAxis", transformProperty);
         $.each(dimValues, function(dimIndex, dim){
             if(dimIndex>0){
                 var splitter = $('<div class="axisSplitter">').appendTo($(".topAxis"));
@@ -290,7 +301,6 @@ function CubeInstance(viewport, data){
                 var dimValue = obj.innerText;
                 $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
             });
-
         });
     };
 
@@ -311,7 +321,7 @@ function CubeInstance(viewport, data){
             "translateY("+(leftAxisWidth/2 + 21 + (diffY*(this.cubeSize + marginUnit)/2))+"px) " +
             "translateX(-"+(faceWidth*(this.cubeSize + marginUnit)/2 + 12 + 20)+"px) " +
             "rotateZ(-90deg)";
-        $(".leftAxis").css("transform", transformProperty);
+        setTransformStyleToClass(".leftAxis", transformProperty);
         $.each(dimValues, function(dimIndex, dim){
             if(dimIndex>0){
                 var splitter = $('<div class="axisSplitter">').appendTo($(".leftAxis"));
@@ -329,10 +339,7 @@ function CubeInstance(viewport, data){
                 var dimValue = obj.innerText;
                 $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
             });
-
         });
-        $(".axisDim").css("width", this.cubeSize+"px");
-        $(".axisSplitter").css("width", marginUnit+"px");
     };
 
     this.constructAxis = function(face){
@@ -480,11 +487,12 @@ function setTransformStyle(obj, style){
     obj.style.transform       = style;
 }
 
-function setTransitionStyle(obj, style){
-    obj.style.webkitTransition = style;
-    obj.style.mozTransition    = style;
-    obj.style.oTransition      = style;
-    obj.style.transition       = style;
+function setTransitionStyle(obj, transformAttributes){
+    obj.style.webkitTransition = "-webkit-transform " + transformAttributes;
+    obj.style.mozTransition    = "-moz-transform " + transformAttributes;
+    obj.style.msTransition     = "-ms-transform " + transformAttributes;
+    obj.style.oTransition      = "-o-transform " + transformAttributes;
+    obj.style.transition       = "transform " + transformAttributes;
 }
 
 function toRadians (angle) {
@@ -515,17 +523,17 @@ function CubeDataSet(data){
     this.getFaceFixedDimValue = function(face){
         switch (face.name){
             case "front":
-                return this.data.grid.slices[0].lines[0].cubes[0].dim1;
+                return this.dimValues.dim1[0];
             case "back":
-                return this.data.grid.slices[this.data.grid.slices.length-1].lines[0].cubes[0].dim1;
+                return this.dimValues.dim1Reverse[0];
             case "left":
-                return this.data.grid.slices[0].lines[0].cubes[0].dim2;
+                return this.dimValues.dim2[0];
             case "right":
-                return this.data.grid.slices[0].lines[this.data.grid.slices[0].lines.length-1].cubes[0].dim2;
+                return this.dimValues.dim2Reverse[0];
             case "top":
-                return this.data.grid.slices[0].lines[0].cubes[0].dim3;
+                return this.dimValues.dim3[0];
             case "bottom":
-                return this.data.grid.slices[0].lines[0].cubes[this.data.grid.slices[0].lines[0].cubes.length-1].dim3;
+                return this.dimValues.dim3Reverse[0];
             default: return "undefined";
         }
     };
@@ -657,7 +665,23 @@ function CubeDataSet(data){
             dim2Reverse: dim2.slice(0).reverse(),
             dim3Reverse: dim3.slice(0).reverse()
         };
-    }
+    };
 
     this.fillDimValues();
+}
+
+function getGradientPoint(color1, color2, percent){
+    var result = {};
+    result.red = parseInt(color1.red - percent * (color1.red - color2.red));
+    result.green = parseInt(color1.green - percent * (color1.green - color2.green));
+    result.blue = parseInt(color1.blue - percent * (color1.blue - color2.blue));
+    return result;
+}
+
+function rgb(red, green, blue){
+    return {
+        red: red,
+        green: green,
+        blue: blue
+    };
 }

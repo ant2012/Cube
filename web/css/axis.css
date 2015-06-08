@@ -5,21 +5,19 @@
     margin: 0 auto;
     padding: 10px;
     transition: background-color 1s ease;
-    z-index: 500;
 }
 
 .faceHeaderUndefined {
     background-color: rgba(51, 122, 183, 0.1);
-    transition: background-color 2s ease;
 }
 
 .axis {
     position: relative;
     margin: auto;
-    z-index: 501;
     color: #fff;
     background-color: rgba(51, 122, 183, 1);
     transition: background-color 1s ease, transform 1s ease;
+
 }
 .topAxis {
 }
@@ -28,8 +26,6 @@
 .axisDim {
     text-align: center;
     display: inline-block;
-    /*background-color: rgba(51, 122, 183, 1);*/
-    /*z-index: 499;*/
 }
 .axisDim:hover {
     background-color: rgba(255, 255, 204, 1);
@@ -39,11 +35,10 @@
     margin: 0;
     display: inline-block;
     background-color: rgba(255, 255, 255, 1);
-    transition: background-color 2s ease;
+    transition: background-color 1s ease;
 }
 .axisUndefined {
     background-color: rgba(51, 122, 183, 0.1);
-    transition: background-color 2s ease;
 }
 
 .viewport {
@@ -57,11 +52,11 @@
 .grid {
     margin: auto;
 
-    -webkit-transition: transform ease;
-    -moz-transition: transform ease;
-    -ms-transition: transform ease;
-    -o-transition: transform ease;
-    transition: transform ease;
+    /*-webkit-transition: transform ease;*/
+    /*-moz-transition: transform ease;*/
+    /*-ms-transition: transform ease;*/
+    /*-o-transition: transform ease;*/
+    /*transition: transform ease;*/
 
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
@@ -93,7 +88,8 @@
 
 .cube > div {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.85);
+    display: table;
+    /*background-color: rgba(255, 255, 255, 0.85);*/
     font-size: 1em;
     line-height: 1em;
     color: #000;
@@ -114,12 +110,9 @@
     transform: rotateY(0deg);
 }
 
-.cube ul {
-    font-family: monospace;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: left;
+.cube label {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .cube .back   {
