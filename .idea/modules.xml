@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/cube-3d.iml" filepath="$PROJECT_DIR$/cube-3d.iml" />
+      <module fileurl="file://$USER_HOME$/IdeaProjects/cube/cube.iml" filepath="$USER_HOME$/IdeaProjects/cube/cube.iml" />
     </modules>
   </component>
 </project>
