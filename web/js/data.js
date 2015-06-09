@@ -43,6 +43,6 @@ function getJsonData(){
     jqxhr.done(function(data) {
         constructCube(data);
         var cube = new CubeInstance($('.viewport')[0], data);
-        subscribeCubeEvents(cube);
+        window.afterCubeInit(cube);
     });
 }

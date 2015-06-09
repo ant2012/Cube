@@ -1,18 +1,35 @@
+.pageHeader {
+    display: table;
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    color: rgb(51, 122, 183);
+}
+.pageHeader div {
+    display: table-cell;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.measure {
+    text-align: right;
+}
+
 .joystick {
     position: fixed;
     bottom: 10px;
-    border: thin dashed rgb(51, 122, 183);
+    border: thin solid rgb(51, 122, 183);
     background-color: #fff;
 }
 .joystick>table {
     margin: 10px;
+    text-align: center;
 }
 .joystickHandler {
     color: rgb(51, 122, 183);
     text-align: left;
     cursor: pointer;
     font-size: smaller;
-    border-bottom: thin dashed rgb(51, 122, 183);
+    border-bottom: thin solid rgb(51, 122, 183);
 }
 .joystickHandler:hover {
     background-color: rgb(255, 255, 204);
