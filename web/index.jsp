@@ -12,13 +12,16 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>The Cube Demo</title>
+  <link rel="stylesheet" href="css/bootstrap.some.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<a href="cube.html">Go Cube</a><br/>
-<a href="slice.html">Go Slice</a><br/>
-<a href="grid.html">Go 3DGrid</a><br/>
-<a href="dynamic.html">Go Dynamic</a><br/>
-<a href="axis.html">Go Axis</a><br/>
+<div class="navigation">
+  <button class="btn btn-default" onclick="window.location.href='cube.html'">Go Cube</button>
+  <button class="btn btn-default" onclick="window.location.href='slice.html'">Go Slice</button>
+  <button class="btn btn-default" onclick="window.location.href='grid.html'">Go 3DGrid</button>
+  <button class="btn btn-default" onclick="window.location.href='dynamic.html'">Go Dynamic</button>
+</div><br/>
 <img src="img/splash.png">
 </body>
 </html>

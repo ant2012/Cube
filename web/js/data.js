@@ -19,27 +19,12 @@ function constructCube(data){
                     .attr("data-index1", cube.index1)
                     .appendTo(lineDom);
 
-                var dimensionsHint = "measure: " + data.grid.index1 + "\n";
-                dimensionsHint += "dimensions:\n";
-                dimensionsHint += data.grid.slicesDimension1 + "=" + cube.dim1 + "\n";
-                dimensionsHint += data.grid.cubesDimension2 + "=" + cube.dim2 + "\n";
-                dimensionsHint += data.grid.linesDimension3 + "=" + cube.dim3;
-                var cubeFrontContent = "";
-
-                cubeFrontContent += "<label title='"+dimensionsHint+"'>"+cube.index1+"</label>";
-
-                //cubeFrontContent += "<ul class='dimList'>";
-                //cubeFrontContent += "<li class='dim1' title='"+data.grid.slicesDimension1+"'>" + cube.dim1 + "</li>";
-                //cubeFrontContent += "<li class='dim2' title='"+data.grid.cubesDimension2+"'>" + cube.dim2 + "</li>";
-                //cubeFrontContent += "<li class='dim3' title='"+data.grid.linesDimension3+"'>" + cube.dim3 + "</li>";
-                //cubeFrontContent += "</ul>";
-
-                $("<div class='front'>").append(cubeFrontContent).appendTo(cubeDom);
-                $("<div class='back'>").append(cubeFrontContent).appendTo(cubeDom);
-                $("<div class='right'>").append(cubeFrontContent).appendTo(cubeDom);
-                $("<div class='left'>").append(cubeFrontContent).appendTo(cubeDom);
-                $("<div class='top'>").append(cubeFrontContent).appendTo(cubeDom);
-                $("<div class='bottom'>").append(cubeFrontContent).appendTo(cubeDom);
+                $("<div class='front'>").appendTo(cubeDom);
+                $("<div class='back'>").appendTo(cubeDom);
+                $("<div class='right'>").appendTo(cubeDom);
+                $("<div class='left'>").appendTo(cubeDom);
+                $("<div class='top'>").appendTo(cubeDom);
+                $("<div class='bottom'>").appendTo(cubeDom);
             })
         });
         sliceDom.appendTo($('.slices'));

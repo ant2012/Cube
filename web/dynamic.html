@@ -3,46 +3,74 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>The Cube</title>
+  <link rel="stylesheet" href="css/bootstrap.some.css">
   <link rel="stylesheet" href="css/dynamic.css" />
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!--[if lt IE 9]><!--<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>--><![endif]-->
 </head>
 <body>
-<h4>The Cube</h4>
+<h4>The Cube Analytics</h4>
 <div class="wrapper">
   <section class="viewport">
-    <div class="infoBox">
-      <label>Nearest Face=front</label><br/>
-      <label>dX = 0.00deg; dY = 0.00deg; dZ = 0.00deg;</label>
-    </div>
+    <div class="faceHeader faceHeaderUndefined">Face Header</div>
+    <div class="axis topAxis axisUndefined">Top Axis</div>
+    <div class="axis leftAxis axisUndefined">Left Axis</div>
+    <!--<div class="infoBox">-->
+      <!--<label>Nearest Face=front</label><br/>-->
+      <!--<label>dX = 0.00deg; dY = 0.00deg; dZ = 0.00deg;</label>-->
+    <!--</div>-->
     <div class="grid">
-      <div class="slices"></div>
+      <div class="slices">Loading Cube..</div>
     </div>
   </section>
 </div>
-<div>
-  <table>
+<div class="joystick">
+  <div class="joystickHandler" title="Show\Hide">&nbsp;&#9650;&nbsp;</div>
+  <table class="joystickHidden" style="text-align: center">
     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
       <td>
-        <button id="showTop">Show Top</button>
+        <button class="btn btn-default" id="showBack">Show Back</button>
       </td>
     </tr>
     <tr>
+      <td></td>
       <td>
-        <button id="showFront">Show Front</button>
-        <button id="showRight">Show Right</button>
-        <button id="showBack">Show Back</button>
-        <button id="showLeft">Show Left</button>
+        <button class="btn btn-default" id="showTop">Show Top</button>
       </td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <td>
-        <button id="showBottom">Show Bottom</button>
+        <button class="btn btn-default" id="showLeft">Show Left</button>
+      </td>
+      <td>
+        <button class="btn btn-default" id="showFront">Show Front</button>
+      </td>
+      <td>
+        <button class="btn btn-default" id="showRight">Show Right</button>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button class="btn btn-default" id="showBottom">Show Bottom</button>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="4" align="right">
+        <label for="autoRotate">AutoRotate to nearest face</label><input id="autoRotate" type="checkbox" checked><br/>
+        <label for="showDimensions">Show dimensions</label><input id="showDimensions" type="checkbox" unchecked>
       </td>
     </tr>
   </table>
 </div>
 <div>
-  <label for="autoRotate">AutoRotate to nearest face</label><input id="autoRotate" type="checkbox" checked>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -76,17 +104,31 @@
       cube.showFace("bottom");
     });
 
-    //CheckBox
+    //Auto Rotate
     $('#autoRotate')[0].checked = cube.autoRotateToNearestFace;
     $('#autoRotate').on('click', function(evt){
       cube.autoRotateToNearestFace = evt.target.checked;
       cube.showNearestFace();
     })
+
+    //Dimensions
+    $('#showDimensions')[0].checked = cube.showDimensions;
+    $('#showDimensions').on('click', function(evt){
+      cube.showDimensions = evt.target.checked;
+      cube.fillFaces();
+    })
   }
   //Init Cube on document load
   $(function(){
     getJsonData();
-
+    $('.joystickHandler').on('click', function(evt){
+      if($('.joystick>table').hasClass('joystickHidden')){
+        $('.joystickHandler')[0].innerHTML = "&nbsp;&#9660;&nbsp;";
+      }else{
+        $('.joystickHandler')[0].innerHTML = "&nbsp;&#9650;&nbsp;";
+      }
+      $('.joystick>table').toggleClass('joystickHidden');
+    })
   });
 
 </script>
