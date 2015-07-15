@@ -1,9 +1,9 @@
 {
   "grid": {
-    "slicesDimension1": "productCategory",
-    "linesDimension3": "year",
-    "cubesDimension2": "country",
-    "index1": "salesFact",
+    "slicesDimension1": "V time",
+    "linesDimension2": "V region",
+    "cubesDimension3": "V trader",
+    "index1": "Vg tg",
     "slices": [
       {
         "sliceNum": 0,
@@ -11,423 +11,44 @@
           {
             "cubes": [
               {
-                "dim1": "electronics",
-                "dim2": "Italy",
-                "dim3": 2011,
-                "index1": 133.42
+                "dim1": "2010",
+                "dim2": "ЦЗ Европы и Урала",
+                "dim3": "АЭС",
+                "index1": "710702802"
               },
               {
-                "dim1": "electronics",
-                "dim2": "Italy",
-                "dim3": 2012,
-                "index1": 148.01
+                "dim1": "2010",
+                "dim2": "ЦЗ Европы и Урала",
+                "dim3": "ГЭС",
+                "index1": "211651330"
               },
               {
-                "dim1": "electronics",
-                "dim2": "Italy",
-                "dim3": 2013,
-                "index1": 137.77
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Italy",
-                "dim3": 2014,
-                "index1": 127.36
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Italy",
-                "dim3": 2015,
-                "index1": 128.56
+                "dim1": "2010",
+                "dim2": "ЦЗ Европы и Урала",
+                "dim3": "ТЭС",
+                "index1": "2351823853"
               }
             ]
           },
           {
             "cubes": [
               {
-                "dim1": "electronics",
-                "dim2": "Russia",
-                "dim3": 2011,
-                "index1": 131.88
+                "dim1": "2010",
+                "dim2": "ЦЗ Сибири",
+                "dim3": "АЭС",
+                "index1": ""
               },
               {
-                "dim1": "electronics",
-                "dim2": "Russia",
-                "dim3": 2012,
-                "index1": 170.74
+                "dim1": "2010",
+                "dim2": "ЦЗ Сибири",
+                "dim3": "ГЭС",
+                "index1": "305970307"
               },
               {
-                "dim1": "electronics",
-                "dim2": "Russia",
-                "dim3": 2013,
-                "index1": 207.30
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Russia",
-                "dim3": 2014,
-                "index1": 161.16
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Russia",
-                "dim3": 2015,
-                "index1": 143.06
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "electronics",
-                "dim2": "Deutchland",
-                "dim3": 2011,
-                "index1": 167.62
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Deutchland",
-                "dim3": 2012,
-                "index1": 137.36
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Deutchland",
-                "dim3": 2013,
-                "index1": 186.50
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Deutchland",
-                "dim3": 2014,
-                "index1": 186.74
-              },
-              {
-                "dim1": "electronics",
-                "dim2": "Deutchland",
-                "dim3": 2015,
-                "index1": 155.48
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "sliceNum": 1,
-        "lines": [
-          {
-            "cubes": [
-              {
-                "dim1": "services",
-                "dim2": "Italy",
-                "dim3": 2011,
-                "index1": 95.44
-              },
-              {
-                "dim1": "services",
-                "dim2": "Italy",
-                "dim3": 2012,
-                "index1": 117.52
-              },
-              {
-                "dim1": "services",
-                "dim2": "Italy",
-                "dim3": 2013,
-                "index1": 111.46
-              },
-              {
-                "dim1": "services",
-                "dim2": "Italy",
-                "dim3": 2014,
-                "index1": 116.90
-              },
-              {
-                "dim1": "services",
-                "dim2": "Italy",
-                "dim3": 2015,
-                "index1": 130.96
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "services",
-                "dim2": "Russia",
-                "dim3": 2011,
-                "index1": 171.61
-              },
-              {
-                "dim1": "services",
-                "dim2": "Russia",
-                "dim3": 2012,
-                "index1": 184.85
-              },
-              {
-                "dim1": "services",
-                "dim2": "Russia",
-                "dim3": 2013,
-                "index1": 194.49
-              },
-              {
-                "dim1": "services",
-                "dim2": "Russia",
-                "dim3": 2014,
-                "index1": 169.15
-              },
-              {
-                "dim1": "services",
-                "dim2": "Russia",
-                "dim3": 2015,
-                "index1": 186.92
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "services",
-                "dim2": "Deutchland",
-                "dim3": 2011,
-                "index1": 198.75
-              },
-              {
-                "dim1": "services",
-                "dim2": "Deutchland",
-                "dim3": 2012,
-                "index1": 179.14
-              },
-              {
-                "dim1": "services",
-                "dim2": "Deutchland",
-                "dim3": 2013,
-                "index1": 179.06
-              },
-              {
-                "dim1": "services",
-                "dim2": "Deutchland",
-                "dim3": 2014,
-                "index1": 174.92
-              },
-              {
-                "dim1": "services",
-                "dim2": "Deutchland",
-                "dim3": 2015,
-                "index1": 151.41
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "sliceNum": 2,
-        "lines": [
-          {
-            "cubes": [
-              {
-                "dim1": "food",
-                "dim2": "Italy",
-                "dim3": 2011,
-                "index1": 120.93
-              },
-              {
-                "dim1": "food",
-                "dim2": "Italy",
-                "dim3": 2012,
-                "index1": 123.45
-              },
-              {
-                "dim1": "food",
-                "dim2": "Italy",
-                "dim3": 2013,
-                "index1": 128.58
-              },
-              {
-                "dim1": "food",
-                "dim2": "Italy",
-                "dim3": 2014,
-                "index1": 156.92
-              },
-              {
-                "dim1": "food",
-                "dim2": "Italy",
-                "dim3": 2015,
-                "index1": 143.67
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "food",
-                "dim2": "Russia",
-                "dim3": 2011,
-                "index1": 168.13
-              },
-              {
-                "dim1": "food",
-                "dim2": "Russia",
-                "dim3": 2012,
-                "index1": 151.17
-              },
-              {
-                "dim1": "food",
-                "dim2": "Russia",
-                "dim3": 2013,
-                "index1": 186.70
-              },
-              {
-                "dim1": "food",
-                "dim2": "Russia",
-                "dim3": 2014,
-                "index1": 143.56
-              },
-              {
-                "dim1": "food",
-                "dim2": "Russia",
-                "dim3": 2015,
-                "index1": 149.98
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "food",
-                "dim2": "Deutchland",
-                "dim3": 2011,
-                "index1": 193.46
-              },
-              {
-                "dim1": "food",
-                "dim2": "Deutchland",
-                "dim3": 2012,
-                "index1": 165.80
-              },
-              {
-                "dim1": "food",
-                "dim2": "Deutchland",
-                "dim3": 2013,
-                "index1": 160.82
-              },
-              {
-                "dim1": "food",
-                "dim2": "Deutchland",
-                "dim3": 2014,
-                "index1": 175.31
-              },
-              {
-                "dim1": "food",
-                "dim2": "Deutchland",
-                "dim3": 2015,
-                "index1": 187.71
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "sliceNum": 3,
-        "lines": [
-          {
-            "cubes": [
-              {
-                "dim1": "wear",
-                "dim2": "Italy",
-                "dim3": 2011,
-                "index1": 133.81
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Italy",
-                "dim3": 2012,
-                "index1": 109.54
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Italy",
-                "dim3": 2013,
-                "index1": 113.04
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Italy",
-                "dim3": 2014,
-                "index1": 94.98
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Italy",
-                "dim3": 2015,
-                "index1": 118.78
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "wear",
-                "dim2": "Russia",
-                "dim3": 2011,
-                "index1": 220.63
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Russia",
-                "dim3": 2012,
-                "index1": 204.64
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Russia",
-                "dim3": 2013,
-                "index1": 170.43
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Russia",
-                "dim3": 2014,
-                "index1": 179.73
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Russia",
-                "dim3": 2015,
-                "index1": 169.50
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "wear",
-                "dim2": "Deutchland",
-                "dim3": 2011,
-                "index1": 190.99
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Deutchland",
-                "dim3": 2012,
-                "index1": 192.53
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Deutchland",
-                "dim3": 2013,
-                "index1": 170.10
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Deutchland",
-                "dim3": 2014,
-                "index1": 211.77
-              },
-              {
-                "dim1": "wear",
-                "dim2": "Deutchland",
-                "dim3": 2015,
-                "index1": 148.88
+                "dim1": "2010",
+                "dim2": "ЦЗ Сибири",
+                "dim3": "ТЭС",
+                "index1": "519966285"
               }
             ]
           }
@@ -436,4 +57,3 @@
     ]
   }
 }
-

@@ -3,8 +3,8 @@ function constructCube(data){
 
     $('.grid')
         .attr("data-dim1-name", data.grid.slicesDimension1)
-        .attr("data-dim2-name", data.grid.cubesDimension2)
-        .attr("data-dim3-name", data.grid.linesDimension3);
+        .attr("data-dim2-name", data.grid.linesDimension2)
+        .attr("data-dim3-name", data.grid.cubesDimension3);
 
     $('.slices').empty();
     $.each(data.grid.slices, function(sliceIndex, slice){
@@ -30,8 +30,8 @@ function constructCube(data){
         sliceDom.appendTo($('.slices'));
     })
 }
-function getJsonData(){
-    var jqxhr = $.getJSON("data.json", function(){
+function getJsonData(jsonServletUrl){
+    var jqxhr = $.getJSON(jsonServletUrl, function(){
         console.log( "success" );
     }).done(function() {
         console.log( "second success" );

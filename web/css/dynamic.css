@@ -29,7 +29,7 @@
     text-align: left;
     cursor: pointer;
     font-size: smaller;
-    border-bottom: thin solid rgb(51, 122, 183);
+    border-top: thin solid rgb(51, 122, 183);
 }
 .joystickHandler:hover {
     background-color: rgb(255, 255, 204);

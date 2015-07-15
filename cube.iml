@@ -25,5 +25,7 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="three" level="application" />
     <orderEntry type="library" name="html5" level="application" />
+    <orderEntry type="library" name="olap4j" level="project" />
+    <orderEntry type="library" name="org.glassfish:javax.json:1.0.4" level="project" />
   </component>
 </module>

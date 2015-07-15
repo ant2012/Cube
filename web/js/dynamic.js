@@ -72,7 +72,7 @@ function CubeInstance(viewport, data){
         var hoverColor2 = rgb(240, 173, 78);
 
         $('.cube').each(function(index, item){
-            var itemColorPercent = ($(item).data().index1 - index1MinVal)/index1Difference;
+            var itemColorPercent = (index1Difference==0)?0:($(item).data().index1 - index1MinVal)/index1Difference;
 
             var itemColorValue = getGradientPoint(color1, color2, itemColorPercent);
             var itemHoverColorValue = getGradientPoint(hoverColor1, hoverColor2, itemColorPercent);
@@ -249,12 +249,12 @@ function CubeInstance(viewport, data){
                     $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
                     $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
                     break;
-                case "cubesDimension2":
+                case "linesDimension2":
                     $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
                     $(this.domObject).find('.dim2').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
                     $(this.domObject).find('.dim3').css("text-decoration", "none").css("color", "#000");
                     break;
-                case "linesDimension3":
+                case "cubesDimension3":
                     $(this.domObject).find('.dim1').css("text-decoration", "none").css("color", "#000");
                     $(this.domObject).find('.dim2').css("text-decoration", "none").css("color", "#000");
                     $(this.domObject).find('.dim3').css("text-decoration", "line-through").css("color", "rgba(1, 1, 1, 0.4)");
@@ -302,11 +302,11 @@ function CubeInstance(viewport, data){
             $(dimDiv).hover(function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+                $(".cube[data-"+dimNumber+"='"+dimValue+"']").find('div').trigger(e.type);
             }, function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+                $(".cube[data-"+dimNumber+"='"+dimValue+"']").find('div').trigger(e.type);
             });
         });
     };
@@ -340,11 +340,11 @@ function CubeInstance(viewport, data){
             $(dimDiv).hover(function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+                $(".cube[data-"+dimNumber+"='"+dimValue+"']").find('div').trigger(e.type);
             }, function(e){
                 var obj = e.target;
                 var dimValue = obj.innerText;
-                $(".cube[data-"+dimNumber+"="+dimValue+"]").find('div').trigger(e.type);
+                $(".cube[data-"+dimNumber+"='"+dimValue+"']").find('div').trigger(e.type);
             });
         });
     };
@@ -362,15 +362,15 @@ function CubeInstance(viewport, data){
             var dimensionsHint = "measure: " + data.grid.index1 + "\n";
             dimensionsHint += "dimensions:\n";
             dimensionsHint += data.grid.slicesDimension1 + "=" + $(cube).data().dim1 + "\n";
-            dimensionsHint += data.grid.cubesDimension2 + "=" + $(cube).data().dim2 + "\n";
-            dimensionsHint += data.grid.linesDimension3 + "=" + $(cube).data().dim3;
+            dimensionsHint += data.grid.linesDimension2 + "=" + $(cube).data().dim2 + "\n";
+            dimensionsHint += data.grid.cubesDimension3 + "=" + $(cube).data().dim3;
             var cubeFrontContent = "";
 
             if(showDimensions){
                 cubeFrontContent += "<ul class='dimList'>";
                 cubeFrontContent += "<li class='dim1' title='"+data.grid.slicesDimension1+"'>" + $(cube).data().dim1 + "</li>";
-                cubeFrontContent += "<li class='dim2' title='"+data.grid.cubesDimension2+"'>" + $(cube).data().dim2 + "</li>";
-                cubeFrontContent += "<li class='dim3' title='"+data.grid.linesDimension3+"'>" + $(cube).data().dim3 + "</li>";
+                cubeFrontContent += "<li class='dim2' title='"+data.grid.linesDimension2+"'>" + $(cube).data().dim2 + "</li>";
+                cubeFrontContent += "<li class='dim3' title='"+data.grid.cubesDimension3+"'>" + $(cube).data().dim3 + "</li>";
                 cubeFrontContent += "</ul>";
             }
 
@@ -403,25 +403,25 @@ function Faces(){
             name: "top",
             normal: new THREE.Vector3(0,-1,0),
             angles: {x: -90, y: 0, z: 0},
-            fixedDimension: "linesDimension3"
+            fixedDimension: "cubesDimension3"
         },
         {
             name: "bottom",
             normal: new THREE.Vector3(0,1,0),
             angles: {x: 90, y: 0, z: 0},
-            fixedDimension: "linesDimension3"
+            fixedDimension: "cubesDimension3"
         },
         {
             name: "left",
             normal: new THREE.Vector3(-1,0,0),
             angles: {x: 0, y: 90, z: 0},
-            fixedDimension: "cubesDimension2"
+            fixedDimension: "linesDimension2"
         },
         {
             name: "right",
             normal: new THREE.Vector3(1,0,0),
             angles: {x: 0, y: -90, z: 0},
-            fixedDimension: "cubesDimension2"
+            fixedDimension: "linesDimension2"
         }
     ];
     this.cameraVector = new THREE.Vector3(0,0,1);
