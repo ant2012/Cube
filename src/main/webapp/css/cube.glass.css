@@ -1,0 +1,214 @@
+.pageHeader {
+    display: table;
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    color: rgb(51, 122, 183);
+}
+.pageHeader div {
+    display: table-cell;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.measure {
+    text-align: right;
+}
+
+.joystick {
+    position: fixed;
+    bottom: 10px;
+    border: thin solid #555;
+    background-color: #fff;
+}
+.joystick>table {
+    margin: 10px;
+    text-align: center;
+}
+.joystickHandler {
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    font-size: smaller;
+    border-top: thin solid #555;
+    background-color: rgba(50, 50, 50, 0.5);
+}
+.joystickHandler:hover {
+    background-color: rgba(50, 50, 50, 0.9);
+}
+.joystickHidden {
+    display: none;
+}
+.faceHeader {
+    position: relative;
+    color: #fff;
+    background-color: rgba(51, 122, 183, 1);
+    margin: 0 auto;
+    padding: 10px;
+    transition: background-color 1s ease;
+}
+
+.faceHeaderUndefined {
+    background-color: rgba(51, 122, 183, 0.1);
+}
+
+.axis {
+    position: relative;
+    margin: auto;
+    color: #fff;
+    background-color: rgba(51, 122, 183, 1);
+    transition: background-color 1s ease, transform 1s ease;
+
+}
+.topAxis {
+}
+.leftAxis {
+}
+.axisDim {
+    text-align: center;
+    display: inline-block;
+}
+.axisDim:hover {
+    background-color: rgba(255, 255, 204, 1);
+    color: #000;
+}
+.axisSplitter {
+    margin: 0;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 1);
+    transition: background-color 1s ease;
+}
+.axisUndefined {
+    background-color: rgba(51, 122, 183, 0.1);
+}
+
+.viewport {
+    -webkit-transform: scale(0.75, 0.75);
+    -moz-transform: scale(0.75, 0.75);
+    -ms-transform: scale(0.75, 0.75);
+    -o-transform: scale(0.75, 0.75);
+    transform: scale(0.75, 0.75);
+}
+
+.grid {
+    margin: auto;
+
+    /*-webkit-transition: transform ease;*/
+    /*-moz-transition: transform ease;*/
+    /*-ms-transition: transform ease;*/
+    /*-o-transition: transform ease;*/
+    /*transition: transform ease;*/
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.slices {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.slice {
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.line {
+    display: inline-block;
+}
+
+.cube {
+}
+
+.cube > div {
+    position: absolute;
+    font-size: 1em;
+    line-height: 1em;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.cube .front  {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.cube label {
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+}
+
+.cube ul {
+    font-family: monospace;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.cube .back   {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);;
+}
+.cube .right {
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+}
+.cube .left {
+    -webkit-transform: rotateY(-90deg);
+    -moz-transform: rotateY(-90deg);
+    -ms-transform: rotateY(-90deg);
+    -o-transform: rotateY(-90deg);
+    transform: rotateY(-90deg);
+}
+.cube .top {
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    -ms-transform: rotateX(90deg);
+    -o-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+}
+.cube .bottom {
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    -ms-transform: rotateX(-90deg);
+    -o-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+}
+
+.infoBox {
+    position: absolute;
+}
+
+.cubeColor1 {
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+.cubeColor2 {
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+.cubeHoverColor1 {
+    background-color: rgba(50, 50, 50, 0.9);
+}
+
+.cubeHoverColor2 {
+    background-color: rgba(50, 50, 50, 0.9);
+}
