@@ -10,21 +10,21 @@ Inspired by [Paul Hayes's cube](https://github.com/fofr/paulrhayes.com-experimen
 
 ### Getting started
 
-1. Link style
+- Link style
 ```HTML
   <link rel="stylesheet" href="css/cube.glass.css" />
 ```
-2. Link Cube JQuery plugin and it's dependencies
+- Link Cube JQuery plugin and it's dependencies
 ```HTML
   <script src="js/jquery.min.js"></script>
   <script src="js/three.min.js"></script>
   <script src="js/jquery.cube.js"></script>
 ```
-3. Prepare DOM container
+- Prepare DOM container
 ```HTML
 <div id="cube"></div>
 ```
-4. Run cube for inline data object
+- Run cube for inline data object
 ```javascript
   $(function(){
     $('#cube').cube({
@@ -39,7 +39,7 @@ Inspired by [Paul Hayes's cube](https://github.com/fofr/paulrhayes.com-experimen
     });
   });
 ```
-5. Or load JSON
+- Or load JSON
 ```javascript
   $(function(){
     $('#cube').cube({
@@ -48,7 +48,7 @@ Inspired by [Paul Hayes's cube](https://github.com/fofr/paulrhayes.com-experimen
     });
   });
 ```
-6. Learn all options and defaults
+- Learn all options and defaults
 ```javascript
         var defaultOptions = {
               title: 'The Cube Analytics'
