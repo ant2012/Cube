@@ -127,18 +127,12 @@
 
 .cube > div {
     position: absolute;
-    /*display: table;*/
-    /*background-color: rgba(255, 255, 255, 0.85);*/
     font-size: 1em;
     line-height: 1em;
     color: #000;
     border: 1px solid #555;
     border-radius: 3px;
     text-align: center;
-}
-
-.cube > div:hover {
-    background-color: rgba(240, 240, 255, 1);
 }
 
 .cube .front  {
@@ -196,4 +190,24 @@
     -ms-transform: rotateX(-90deg);
     -o-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
+}
+
+.infoBox {
+    position: absolute;
+}
+
+.cubeColor1 {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.cubeColor2 {
+    background-color: rgba(21, 92, 153, 1);
+}
+
+.cubeHoverColor1 {
+    background-color: rgba(255, 255, 204, 1);
+}
+
+.cubeHoverColor2 {
+    background-color: rgba(240, 173, 78, 1);
 }

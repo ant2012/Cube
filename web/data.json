@@ -1,59 +1,13 @@
 {
   "grid": {
-    "slicesDimension1": "V time",
-    "linesDimension2": "V region",
-    "cubesDimension3": "V trader",
-    "index1": "Vg tg",
-    "slices": [
-      {
-        "sliceNum": 0,
-        "lines": [
-          {
-            "cubes": [
-              {
-                "dim1": "2010",
-                "dim2": "ЦЗ Европы и Урала",
-                "dim3": "АЭС",
-                "index1": "710702802"
-              },
-              {
-                "dim1": "2010",
-                "dim2": "ЦЗ Европы и Урала",
-                "dim3": "ГЭС",
-                "index1": "211651330"
-              },
-              {
-                "dim1": "2010",
-                "dim2": "ЦЗ Европы и Урала",
-                "dim3": "ТЭС",
-                "index1": "2351823853"
-              }
-            ]
-          },
-          {
-            "cubes": [
-              {
-                "dim1": "2010",
-                "dim2": "ЦЗ Сибири",
-                "dim3": "АЭС",
-                "index1": ""
-              },
-              {
-                "dim1": "2010",
-                "dim2": "ЦЗ Сибири",
-                "dim3": "ГЭС",
-                "index1": "305970307"
-              },
-              {
-                "dim1": "2010",
-                "dim2": "ЦЗ Сибири",
-                "dim3": "ТЭС",
-                "index1": "519966285"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "xDimension": {"name": "Region", "values": ["Europe", "Asia"]},
+    "yDimension": {"name": "Trader", "values": ["Airbus", "Boeing", "Others"]},
+    "zDimension": {"name": "Time", "values": ["2010", "2011"]},
+    "index1": {"name": "SalesFact",
+      "values": [
+        "71", "21", "235", "", "30", "51",
+        "51", "11", "25", "100", "3", "111"
+      ]
+    }
   }
 }

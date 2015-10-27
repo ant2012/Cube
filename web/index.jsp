@@ -13,7 +13,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>The Cube Demo</title>
   <link rel="stylesheet" href="css/bootstrap.some.css">
-  <link rel="stylesheet" href="css/index.css">
+  <style>
+    .navigation {
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
 <div class="navigation">

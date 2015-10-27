@@ -3,166 +3,35 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>The Cube</title>
-  <link rel="stylesheet" href="css/grid.css" />
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" href="css/bootstrap.some.css">
+  <link rel="stylesheet" href="css/cube.glass.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+  <script src="js/jquery.cube.js"></script>
 </head>
 <body>
-<h4>The Cube</h4>
-<div class="wrapper">
-  <section class="viewport">
-    <div class="infoBox">
-      <label>Nearest Face=front</label><br/>
-      <label>dX = 0.00deg; dY = 0.00deg; dZ = 0.00deg;</label>
-    </div>
-    <div class="grid">
-      <div class="slices">
-        <div class="slice" data-slice-num="0">
-          <div class="line">
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-          </div>
-          <div class="line">
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-          </div>
-        </div>
-        <div class="slice" data-slice-num="1">
-          <div class="line">
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-          </div>
-          <div class="line">
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-            <div class="cube">
-              <div class="front">front</div>
-              <div class="back">back</div>
-              <div class="right">right</div>
-              <div class="left">left</div>
-              <div class="top">top</div>
-              <div class="bottom">bottom</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<div>
-  <table>
-    <tr>
-      <td>
-        <button id="showTop">Show Top</button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button id="showFront">Show Front</button>
-        <button id="showRight">Show Right</button>
-        <button id="showBack">Show Back</button>
-        <button id="showLeft">Show Left</button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button id="showBottom">Show Bottom</button>
-      </td>
-    </tr>
-  </table>
-</div>
-<div>
-  <label>AutoRotate to nearest face</label><input id="autoRotate" type="checkbox" checked>
-</div>
+<div id="cube"></div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
-<script src="js/grid.js"></script>
 <script lang="javascript">
-  //Init Cube on document load
   $(function(){
-    var Cube = new CubeInstance($('.viewport')[0]);
-
-    //Buttons
-    $('#showRight').on('click', function(){
-      Cube.showFace("right");
-    })
-
-    $('#showLeft').on('click', function(){
-      Cube.showFace("left");
-    })
-
-    $('#showFront').on('click', function(){
-      Cube.showFace("front");
-    })
-
-    $('#showBack').on('click', function(){
-      Cube.showFace("back");
-    })
-
-    $('#showTop').on('click', function(){
-      Cube.showFace("top");
-    })
-
-    $('#showBottom').on('click', function(){
-      Cube.showFace("bottom");
-    })
-
-    //CheckBox
-    $('#autoRotate')[0].checked = Cube.autoRotateToNearestFace;
-    $('#autoRotate').on('click', function(evt){
-      Cube.autoRotateToNearestFace = evt.target.checked;
-      Cube.showNearestFace();
-    })
+    $('#cube').cube({
+      data: {
+        grid: {
+            xDimension: {name: "xDim", values: ["x1", "x2"]},
+            yDimension: {name: "yDim", values: ["y1", "y2"]},
+            zDimension: {name: "zDim", values: ["z1", "z2"]},
+            index1: {name: "Value", values: ["Grid", "Grid", "Grid", "Grid", "Grid", "Grid", "Grid", "Grid"]}
+        }
+      }
+      , title: 'The Cube Analytics'
+      , pageHeader: false
+      , faceHeader: false
+      , axis: false
+      , infoBox: true
+      , joystick: true
+      , viewportSize: 400
+    });
   });
-
 </script>
 
 </body>
