@@ -8,6 +8,6 @@ Github Hot Preview: [Cube](http://htmlpreview.github.io/?https://github.com/ant2
 
 [Heroku Snapshot](http://cube-analytics.herokuapp.com/) *(Including dynamic cube generation)*
 
-![Slice Splash](/web/img/splash.png)
+![Slice Splash](/src/main/webapp/img/splash.png)
 
 Inspired by [Paul Hayes's cube](https://github.com/fofr/paulrhayes.com-experiments/tree/master/cube-3d/)
