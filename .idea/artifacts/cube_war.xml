@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="cube:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/cube_war</output-path>
-    <root id="archive" name="cube.war">
-      <element id="artifact" artifact-name="cube:war exploded" />
-    </root>
-  </artifact>
-</component>
