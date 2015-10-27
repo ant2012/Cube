@@ -2,11 +2,7 @@
 Based on CSS3, JQuery and ThreeJS <br/>
 ![Chrome](http://www.google.com/images/icons/material/product/1x/chrome_32dp.png) *For Chrome browser only!*
 
-Github Hot Preview: [Cube](http://htmlpreview.github.io/?https://github.com/ant2012/Cube/blob/master/web/cube.html)
-[Slice](http://htmlpreview.github.io/?https://github.com/ant2012/Cube/blob/master/web/slice.html)
-[Grid](http://htmlpreview.github.io/?https://github.com/ant2012/Cube/blob/master/web/grid.html)
-
-[Heroku Snapshot](http://cube-analytics.herokuapp.com/) *(Including dynamic cube generation)*
+Demo: [Heroku snapshot](http://cube-analytics.herokuapp.com/) *(Including dynamic cube generation)*
 
 ![Slice Splash](/src/main/webapp/img/splash.png)
 
