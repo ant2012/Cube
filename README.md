@@ -2,7 +2,7 @@
 Based on CSS3, JQuery and ThreeJS <br/>
 ![Chrome](http://www.google.com/images/icons/material/product/1x/chrome_32dp.png) *For Chrome browser only!*
 
-Demo: [Heroku snapshot](http://cube-analytics.herokuapp.com/) *(Including dynamic cube generation)*
+Demo: [Heroku snapshot](http://cube-analytics.herokuapp.com/)
 
 ![Slice Splash](/src/main/webapp/img/splash.png)
 
