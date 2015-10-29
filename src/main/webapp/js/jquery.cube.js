@@ -5,7 +5,7 @@ function CubeInstance(viewport, options){
     this.viewport = viewport;
     this.options = options;
     this.dataSet = new CubeDataSet(options.data);
-    this.faceHeader = $(viewport).find('.faceHeader')[0];
+    this.faceHeader = $('.faceHeader')[0];
     this.topAxis = $(viewport).find('.topAxis')[0];
     this.leftAxis = $(viewport).find('.leftAxis')[0];
     this.infoBox = $('.infoBox')[0];
@@ -34,16 +34,30 @@ function CubeInstance(viewport, options){
         var yCount = firstLineCubes.length;
 
         var maxDimCount = Math.max(xCount, yCount, zCount);
-        var cubeSize = options.viewportSize/maxDimCount;
+        var cubeSize = options.viewportSize/(maxDimCount);
         this.cubeSize = cubeSize;
         var marginUnit = 0.1*cubeSize;
         this.marginUnit = marginUnit;
+
+        var frontFaceHeight = this.dataSet.getFaceHeight(this.faces.getByName('front'));
+        var diffY = maxDimCount - frontFaceHeight;
+        this.gridBaseTranslationY = (diffY*(this.cubeSize + marginUnit))/2;
+
+        var perspectiveOriginY = 2*this.gridBaseTranslationY + (this.cubeSize + marginUnit)/2;
 
         $('.grid').css("width", (xCount*(cubeSize + marginUnit)) + "px");
         $('.grid').css("height", (yCount*(cubeSize + marginUnit)+marginUnit) + "px");
         $('.slices').css("width", (xCount*(cubeSize + marginUnit)) + "px");
         $('.slices').css("height", (yCount*(cubeSize + marginUnit)+marginUnit) + "px");
         $('.line').css("margin", "0 "+marginUnit/2+"px 0");
+
+        perspectiveOriginY = Number($(this.viewport).css("perspective-origin").split(' ')[1].replace('px', ''));
+        perspectiveOriginY += this.gridBaseTranslationY;
+        if(this.options.faceHeader){
+            perspectiveOriginY += $(this.faceHeader).outerHeight();
+        }
+
+        $(this.viewport).css("perspective-origin", "50% " + perspectiveOriginY +"px");
 
         $('.cube')
             .css("margin-top", marginUnit+"px")
@@ -120,7 +134,7 @@ function CubeInstance(viewport, options){
 
         if(this.options.faceHeader){
             $(this.faceHeader).css("width", (1.1*options.viewportSize-20+marginUnit) + "px");
-            setTransformStyle(this.faceHeader, "translateZ("+options.viewportSize/2+"px)");
+            //setTransformStyle(this.faceHeader, "translateZ("+options.viewportSize/2+"px)");
         }
 
         //subscribe events
@@ -138,7 +152,7 @@ function CubeInstance(viewport, options){
             });
         });
         this.showFace("front");
-        console.log("Cube instance created");
+        if(this.isDebugMode) console.log("Cube instance created");
     };
 
     // X,Y - 2d vector of mouse's movement
@@ -147,26 +161,30 @@ function CubeInstance(viewport, options){
         var normal = new THREE.Vector3(-y, x, 0).normalize();
         var degree = Math.sqrt(x*x + y*y);
         var rotationMatrix = new THREE.Matrix4().makeRotationAxis(normal,toRadians(degree));
-        this.matrix.multiplyMatrices(rotationMatrix, this.matrix);
-        var matrixStyle = constructStyle(this.matrix);
-        setTransformStyle(this.domObject, matrixStyle);
-        this.setInfo();
+        rotationMatrix.multiplyMatrices(rotationMatrix, this.matrix);
+        var euler = new THREE.Euler().setFromRotationMatrix(rotationMatrix);
+        var angles = {
+            x: toDegree(euler.x),
+            y: toDegree(euler.y),
+            z: toDegree(euler.z)
+        };
+        this.rotateToAngles(angles);
     };
 
     //X, Y, Z - is Euler rotation angles about axes
     //rotate viewport from starting position (none relative)
     this.rotateToAngles = function(angles){
         if(this.isDebugMode)console.log("Rotate by angles: dX="+angles.x+"; dY="+angles.y+"; dZ="+angles.z);
-        setTransitionStyle(this.domObject, "1s ease");
         var x = toRadians(angles.x);
         var y = toRadians(angles.y);
         var z = toRadians(angles.z);
 
+        var translation = new THREE.Matrix4().makeTranslation(0, this.gridBaseTranslationY, 0);
         var rotationX = new THREE.Matrix4().makeRotationX(x);
         var rotationY = new THREE.Matrix4().makeRotationY(y);
         var rotationZ = new THREE.Matrix4().makeRotationZ(z);
 
-        this.matrix = new THREE.Matrix4().multiply(rotationX).multiply(rotationY).multiply(rotationZ);
+        this.matrix = new THREE.Matrix4().multiply(translation).multiply(rotationX).multiply(rotationY).multiply(rotationZ);
         var matrixStyle = constructStyle(this.matrix);
         setTransformStyle(this.domObject, matrixStyle);
         this.setInfo();
@@ -175,6 +193,7 @@ function CubeInstance(viewport, options){
     this.showFace = function(faceName){
         var face = this.faces.getByName(faceName);
         this.activateFaceInfo(face);
+        setTransitionStyle(this.domObject, "1s ease");
         this.rotateToAngles(face.angles);
     };
 
@@ -292,7 +311,7 @@ function CubeInstance(viewport, options){
         var marginUnit = this.marginUnit;
         $(".topAxis").empty();
         $(".topAxis").css("width", this.cubeSize*dimValues.length + marginUnit*(dimValues.length - 1)+"px");
-        var transformProperty = "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px)" + " translateY("+(diffY*(this.cubeSize + marginUnit))/2+"px)";
+        var transformProperty = "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px)" + " translateY("+((diffY*(this.cubeSize + marginUnit))/2 + marginUnit) +"px)";
         setTransformStyleToClass(".topAxis", transformProperty);
         $.each(dimValues, function(dimIndex, dim){
             if(dimIndex>0){
@@ -329,8 +348,8 @@ function CubeInstance(viewport, options){
         $(".leftAxis").css("width", leftAxisWidth + "px");
         var transformProperty =
             "translateZ("+(this.cubeSize*faceDeepness + marginUnit*(faceDeepness - 1))/2+"px) " +
-            "translateY("+(leftAxisWidth/2 + 21 + (diffY*(this.cubeSize + marginUnit)/2))+"px) " +
-            "translateX(-"+(faceWidth*(this.cubeSize + marginUnit)/2 + 12 + 20)+"px) " +
+            "translateY("+(leftAxisWidth/2 + (diffY*(this.cubeSize + marginUnit)/2) + marginUnit + 10)+"px) " +
+            "translateX(-"+(faceWidth*(this.cubeSize + marginUnit)/2 + marginUnit) +"px) " +
             "rotateZ(-90deg)";
         setTransformStyleToClass(".leftAxis", transformProperty);
         $.each(dimValues, function(dimIndex, dim){
@@ -798,11 +817,11 @@ function makeContainerDom(domContainer, options){
         $('<div class="measure"></div>').appendTo(pageHeader);
     }
 
+    if(options.faceHeader)
+        $('<div class="faceHeader faceHeaderUndefined">Face Header</div>').appendTo(domContainer);
+
     var wrapper = $('<div class="wrapper"></div>').appendTo(domContainer);
     var viewport = $('<section class="viewport"></section>').appendTo(wrapper);
-
-    if(options.faceHeader)
-        $('<div class="faceHeader faceHeaderUndefined">Face Header</div>').appendTo(viewport);
 
     if(options.axis){
         $('<div class="axis topAxis axisUndefined">Top Axis</div>').appendTo(viewport);
