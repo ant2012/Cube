@@ -13,9 +13,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>The Cube Demo</title>
   <link rel="stylesheet" href="css/bootstrap.some.css">
+  <link rel="stylesheet" href="/octicons/octicons.css">
   <style>
     .navigation {
       margin: 10px;
+    }
+    a {
+      color: #555555;
+      text-decoration: none;
+    }
+    a:hover {
+      color: darkcyan;
     }
   </style>
 </head>
@@ -25,7 +33,9 @@
   <button class="btn btn-default" onclick="window.location.href='slice.html'">Go Slice</button>
   <button class="btn btn-default" onclick="window.location.href='grid.html'">Go 3DGrid</button>
   <button class="btn btn-default" onclick="window.location.href='dynamic.html'">Go Dynamic</button>
+  <a href="https://github.com/ant2012/Cube"><span> View on GitHub </span><span class="octicon octicon-mark-github"></span></a>
 </div><br/>
 <img src="img/splash.png">
+
 </body>
 </html>
